@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "962156856336",
+    "firebase_url": "https://read-chat.firebaseio.com",
+    "project_id": "read-chat",
+    "storage_bucket": "read-chat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:962156856336:android:bf530b4416c3bd7003b695",
+        "android_client_info": {
+          "package_name": "com.albertomoya.readchat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "962156856336-hut0hlh9966sdrgvasr9m6dbs42ai2ae.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.albertomoya.readchat",
+            "certificate_hash": "73eefde137858cb3a5c73c0e860a53c12ada0364"
+          }
+        },
+        {
+          "client_id": "962156856336-mgro0qf3qvjf7u3c4och93f4cg7crh5c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwgIgy4PjD7A0mPzDc9-sWw_oRXHnyMbc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "962156856336-mgro0qf3qvjf7u3c4och93f4cg7crh5c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
