@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">ReadChat</string>
 
-
-
+    <string name="text_view_sign_up">¿Aún no tienes cuenta en ReadChat? ¡Regístrate!</string>
+    <string name="text_view_forgot_password">Vaya … he olvidado mi contraseña</string>
+    <string name="button_iniciar_sesion_email">Iniciar Sesion</string>
+    <string name="button_iniciar_sesion_google">Iniciar Sesion con Google</string>
 </resources>
