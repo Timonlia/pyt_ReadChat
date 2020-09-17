@@ -30,7 +30,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_photo_negro" />
+                android:src="@drawable/ic_photo" />
 
         </com.github.florent37.shapeofview.shapes.ArcView>
 
@@ -151,18 +151,18 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="15dp"
-            android:textColor="@color/colorPrimaryText"
+            android:textColor="@color/colorWhite"
             android:background="@drawable/button_ripple_register"
             android:text="@string/button_sign_up" />
 
     </LinearLayout>
 
     <Button
+        android:id="@+id/ir"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
         android:background="@drawable/button_ripple_sign_up"
-
         android:text="@string/button_back_login"
         app:layout_anchor="@+id/linearLayout"
         app:layout_anchorGravity="bottom|center" />
