@@ -1,5 +1,6 @@
 package com.albertomoya.readchat.activities.launcher
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -25,7 +26,9 @@ class SplashActivity : AppCompatActivity() {
         imageViewLogoReadChat.startAnimation(animation_abajo)
         textViewAppNameSplashScreen.startAnimation(animation_arriba)
         Handler(Looper.getMainLooper()).postDelayed(Runnable {
-            goToActivity<SignInActivity>()
+            goToActivity<SignInActivity>{
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            }
         },5000)
     }
 }

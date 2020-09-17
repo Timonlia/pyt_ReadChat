@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FFC107</color>
-    <color name="colorPrimaryDark">#FFA000</color>
-    <color name="colorPrimaryLight">#FFECB3</color>
-    <color name="colorAccent">#9E9E9E</color>
-    <color name="colorText_Icons">#212121</color>
+    <color name="colorPrimary">#2196F3</color>
+    <color name="colorPrimaryDark">#1976D2</color>
+    <color name="colorPrimaryLight">#BBDEFB</color>
+    <color name="colorAccent">#536DFE</color>
+    <color name="colorText_Icons">#FFFFFF</color>
     <color name="colorPrimaryText">#212121</color>
     <color name="colorSecondaryText">#757575</color>
     <color name="colorOrangeText">#FFC107</color>
     <color name="colorDivider">#BDBDBD</color>
+    <color name="colorMaterial">#121212</color>
+    <color name="colorWhite">#fff</color>
 
-    <color name="color_white">#fff</color>
     <color name="color_background_button">#3A7DCA</color>
     <color name="colorGooglePlus">#DD4B39</color>
     <color name="colorGooglePlusDark">#B92D21</color>

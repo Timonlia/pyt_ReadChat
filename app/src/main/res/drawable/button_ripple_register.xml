@@ -12,4 +12,7 @@
             <corners android:radius="10dp"/>
         </shape>
     </item>
+    <item android:id="@android:id/background"
+        android:drawable="@color/colorPrimary">
+    </item>
 </ripple>
