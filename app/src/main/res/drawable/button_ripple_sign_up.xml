@@ -5,7 +5,7 @@
     <item android:id="@android:id/mask">
         <shape android:shape="rectangle"
             android:padding="10dp">
-            <solid android:color="@color/colorPrimaryDark"/>
+            <solid android:color="@color/colorPrimary"/>
         </shape>
     </item>
 </ripple>

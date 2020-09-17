@@ -6,6 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".activities.login.SignInActivity">
 
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/ic_logo_provisional"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageViewEmail"
@@ -26,9 +34,8 @@
         android:layout_marginBottom="8dp"
         android:inputType="textEmailAddress"
         android:hint="@string/edit_text_hint_email"
-        android:textColor="@color/colorPrimary"
-        android:textColorHint="@color/color_background_button"
-        android:backgroundTint="@color/colorPrimary"
+        android:textColor="@color/colorOrangeText"
+        android:textColorHint="@color/colorSecondaryText"
         app:layout_constraintBottom_toTopOf="@+id/editTextPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -54,9 +61,8 @@
         android:layout_marginBottom="24dp"
         android:inputType="textPassword"
         android:hint="@string/edit_text_hint_password"
-        android:textColor="@color/colorPrimary"
-        android:textColorHint="@color/color_background_button"
-        android:backgroundTint="@color/colorPrimary"
+        android:textColor="@color/colorOrangeText"
+        android:textColorHint="@color/colorSecondaryText"
         app:layout_constraintBottom_toTopOf="@+id/buttonSignIn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -68,8 +74,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:text="@string/text_view_forgot_password"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorSecondaryText"
         android:textSize="15sp"
+        android:fontFamily="@font/roboto_medium_italic"
         app:layout_constraintBottom_toTopOf="@+id/buttonSignGoogle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -83,7 +90,7 @@
         android:layout_marginBottom="32dp"
         android:background="@drawable/button_login_ripple_bg"
         android:text="@string/button_iniciar_sesion_email"
-        android:textColor="@color/color_white"
+        android:textColor="@color/colorPrimaryText"
         app:layout_constraintBottom_toTopOf="@+id/textViewForgotPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -109,7 +116,7 @@
         android:layout_marginBottom="8dp"
         android:background="@drawable/button_ripple_sign_up"
         android:text="@string/text_view_sign_up"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorSecondaryText"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

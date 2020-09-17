@@ -12,7 +12,8 @@
         <activity android:name=".activities.login.ForgotPasswordActivity"/>
         <activity android:name=".activities.login.SignUpActivity" />
         <activity android:name=".activities.login.SignInActivity" />
-        <activity android:name=".activities.launcher.SplashActivity">
+        <activity android:name=".activities.launcher.SplashActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
