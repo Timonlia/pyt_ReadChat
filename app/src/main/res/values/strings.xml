@@ -3,7 +3,7 @@
 
     <string name="text_view_sign_up">Crear cuenta en ReadChat</string>
     <string name="text_view_forgot_password">Vaya … he olvidado mi contraseña</string>
-    <string name="button_iniciar_sesion_email">Iniciar Sesion</string>
+    <string name="button_iniciar_sesión_email">Iniciar Sesion</string>
     <string name="button_iniciar_sesion_google">Iniciar Sesion con Google</string>
     <string name="edit_text_hint_user">Nombre de Usuario</string>
     <string name="edit_text_hint_email">Correo Electrónico</string>
@@ -11,5 +11,8 @@
     <string name="edit_text_hint_confirm_password">Confirmar Contraseña</string>
     <string name="button_back_login">Volver al Login</string>
     <string name="button_sign_up">Registrarme</string>
+    <string name="text_view_title_sign_up">Registrarse ahora</string>
+    <string name="text_view_no_tiene_cuenta">¿No tienes cuenta?</string>
+    <string name="text_view_regístrate">Registrate aqui</string>
 
 </resources>

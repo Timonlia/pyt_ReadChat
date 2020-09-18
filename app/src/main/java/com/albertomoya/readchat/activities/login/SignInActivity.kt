@@ -18,6 +18,6 @@ class SignInActivity : AppCompatActivity() {
 
 
     private fun setOnClickButtons(){
-        ir.setOnClickListener { goToActivity<SignUpActivity> { /* flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK */} }
+        textViewRegistrase.setOnClickListener { goToActivity<SignUpActivity>() }
     }
 }
