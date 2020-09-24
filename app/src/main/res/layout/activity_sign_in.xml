@@ -61,6 +61,7 @@
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textInputEmail"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:hint="@string/edit_text_hint_email"
@@ -90,6 +91,7 @@
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textInputPassword"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:hint="@string/edit_text_hint_password"
@@ -99,6 +101,7 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/buttonSignInWithEmailAndPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
@@ -107,6 +110,7 @@
             android:text="@string/button_iniciar_sesión_email"
             android:textColor="@color/colorWhite" />
         <TextView
+            android:id="@+id/textViewForgotPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/text_view_forgot_password"
@@ -115,9 +119,9 @@
             android:layout_marginTop="20sp"/>
 
         <com.google.android.gms.common.SignInButton
-            android:id="@+id/sign_in_button"
+            android:id="@+id/buttonSignInWithGoogle"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="30dp" />
 
@@ -140,7 +144,7 @@
             app:layout_anchorGravity="bottom|center" />
 
         <TextView
-            android:id="@+id/textViewRegistrase"
+            android:id="@+id/textViewSignUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"

@@ -27,8 +27,9 @@ class SplashActivity : AppCompatActivity() {
         textViewAppNameSplashScreen.startAnimation(animation_arriba)
         Handler(Looper.getMainLooper()).postDelayed(Runnable {
             goToActivity<SignInActivity>{
-                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
             }
+            finish()
         },5000)
     }
 }

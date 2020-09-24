@@ -14,5 +14,10 @@
     <string name="text_view_title_sign_up">Registrarse ahora</string>
     <string name="text_view_no_tiene_cuenta">¿No tienes cuenta?</string>
     <string name="text_view_regístrate">Registrate aqui</string>
+    <string name="edit_text_email_forgot_password">Correo Electrónico</string>
+    <string name="button_resend_email">Volver a enviar</string>
+    <string name="button_ok">Aceptar</string>
+    <string name="button_cancel">Cancelar</string>
+    <string name="title_dialog_forgot_password">Restablecer Contraseña</string>
 
 </resources>
