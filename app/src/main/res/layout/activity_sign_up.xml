@@ -36,8 +36,8 @@
                 android:layout_marginTop="20sp"/>
             <ImageView
                 android:id="@+id/imageViewBackLogin"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:src="@drawable/ic_back"
                 android:scaleType="centerCrop"
                 android:layout_margin="20sp"/>
@@ -51,7 +51,7 @@
                 android:textColor="@color/colorWhite"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:layout_marginTop="25sp"/>
+                android:layout_marginTop="24sp"/>
 
         </com.github.florent37.shapeofview.shapes.ArcView>
         <LinearLayout
@@ -63,10 +63,10 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginRight="15dp"
                 android:src="@drawable/ic_person" />
 
@@ -92,10 +92,10 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginRight="15dp"
                 android:src="@drawable/ic_email" />
 
@@ -121,10 +121,10 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginRight="15dp"
                 android:src="@drawable/ic_password" />
 
@@ -150,10 +150,10 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginRight="15dp"
                 android:src="@drawable/ic_password" />
 
