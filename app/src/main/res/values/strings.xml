@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ReadChat</string>
+    <string name="app_name">Read Chat</string>
 
     <string name="text_view_sign_up">Crear cuenta en ReadChat</string>
     <string name="text_view_forgot_password">Vaya … he olvidado mi contraseña</string>
@@ -20,4 +20,9 @@
     <string name="button_cancel">Cancelar</string>
     <string name="title_dialog_forgot_password">Restablecer Contraseña</string>
 
+    // Snackbars
+    <string name="snackbar_confirm_email">Revisa tu correo, y confirma el email</string>
+    <string name="snackbar_need_register">Error, compreba que hayas introducido tus datos correctamente</string>
+    <string name="snackbar_email_confirm_send">Te acabamos de mandar un email de confirmacion</string>
+    <string name="snackbar_unexpected_error_register">Ha habido un error inesperado, vuelve a intentarlo</string>
 </resources>

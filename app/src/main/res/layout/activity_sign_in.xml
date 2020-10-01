@@ -6,6 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
     tools:context=".activities.login.SignUpActivity"
+    android:id="@+id/activity_sign_in"
     android:focusable="true"
     android:focusableInTouchMode="true">
 
@@ -95,7 +96,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:hint="@string/edit_text_hint_password"
-                    android:inputType="textEmailAddress"
+                    android:inputType="textPassword"
                     android:textColorHint="@color/colorSecondaryText"/>
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
@@ -121,7 +122,7 @@
         <com.google.android.gms.common.SignInButton
             android:id="@+id/buttonSignInWithGoogle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="30dp" />
 
