@@ -7,10 +7,12 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import com.albertomoya.readchat.R
-import com.albertomoya.readchat.others.goToActivity
-import com.albertomoya.readchat.others.snackBar
+import com.albertomoya.readchat.others.*
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_sign_in.*
 import kotlinx.android.synthetic.main.activity_sign_up.*
+import kotlinx.android.synthetic.main.activity_sign_up.textInputEmail
+import kotlinx.android.synthetic.main.activity_sign_up.textInputPassword
 
 class SignUpActivity : AppCompatActivity() {
 
@@ -20,14 +22,28 @@ class SignUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
-
+        // Validaciones
+        validateTextView()
+        // Boton registrar
         buttonSignUp.setOnClickListener {
             var email = textInputEmail.text.toString()
             var password = textInputPassword.text.toString()
             var user = textInputUser.text.toString()
-            signUpWithEmailAndPassword(email,password)
+            if (user.isNotEmpty()) signUpWithEmailAndPassword(email,password) else snackBar("Rellena el campo usuario")
         }
+        
+    }
 
+    private fun validateTextView(){
+        textInputEmail.onChange {
+            textInputEmail.error = if (isValidEmail(it)) null else getString(R.string.error_email_is_not_valid)
+        }
+        textInputPassword.onChange {
+            textInputPassword.error = if (isValidPassword(it)) null else getString(R.string.error_password_is_not_valid)
+        }
+        textInputConfirmPassword.onChange {
+            textInputConfirmPassword.error = if (isValidConfirmPassword(textInputPassword.text.toString(),it)) null else getString(R.string.error_confirm_password_is_not_valid)
+        }
     }
 
     private fun signUpWithEmailAndPassword(email: String, password: String){
