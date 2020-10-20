@@ -1,11 +1,10 @@
-package com.albertomoya.readchat.activities.dialogs
+package com.albertomoya.readchat.dialogs
 
 import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import com.albertomoya.readchat.R
-import kotlinx.android.synthetic.main.dialog_forgot_password.*
 
 class ForgotPasswordDialog: DialogFragment() {
 

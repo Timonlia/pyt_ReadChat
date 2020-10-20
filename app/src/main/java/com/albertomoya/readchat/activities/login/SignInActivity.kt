@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.albertomoya.readchat.MainActivity
 import com.albertomoya.readchat.R
-import com.albertomoya.readchat.activities.dialogs.ForgotPasswordDialog
+import com.albertomoya.readchat.dialogs.ForgotPasswordDialog
 import com.albertomoya.readchat.others.goToActivity
 import com.albertomoya.readchat.others.snackBar
 import com.google.android.gms.auth.api.Auth
@@ -14,7 +14,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.android.synthetic.main.activity_sign_in.*
 
