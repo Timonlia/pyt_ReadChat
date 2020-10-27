@@ -28,6 +28,7 @@
 
     // Errors
     <string name="error_email_is_not_valid">El email no es valido</string>
+    <string name="error_email_is_empty">Rellena el campo email</string>
     <string name="error_password_is_not_valid">1-minúscula, 1-mayúscula, 1-número y mínimo 6 caracteres</string>
     <string name="error_confirm_password_is_not_valid">Los campos CONTRASEÑA y CONFIRMAR CONTRASEÑA no son iguales</string>
 </resources>

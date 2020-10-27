@@ -32,6 +32,7 @@ fun Activity.snackBar(message: CharSequence, view: View? = findViewById(R.id.con
         snackbar.show()
     }
 }
+
 fun EditText.onChange(validation: (String) -> Unit){
     this.addTextChangedListener(object : TextWatcher {
         override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -48,7 +49,7 @@ fun EditText.onChange(validation: (String) -> Unit){
     })
 }
 // Validaciones con patrones
-fun Activity.isValidEmail(email: String): Boolean{
+fun isValidEmail(email: String): Boolean{
     val emailPatter = Patterns.EMAIL_ADDRESS
     return emailPatter.matcher(email).matches()
 }
