@@ -6,18 +6,25 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import com.albertomoya.readchat.R
 import com.albertomoya.readchat.others.*
+import com.albertomoya.readchat.persistance.User
+import com.albertomoya.readchat.utilities.NamesCollection
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.activity_sign_in.*
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import kotlinx.android.synthetic.main.activity_sign_up.textInputEmail
 import kotlinx.android.synthetic.main.activity_sign_up.textInputPassword
+import kotlin.collections.hashMapOf as hashMapOf
 
 class SignUpActivity : AppCompatActivity() {
 
     // Firebase
     private val mAuth = FirebaseAuth.getInstance()
+    private val mDb = FirebaseFirestore.getInstance()
+    // Variables
+    private lateinit var newUser: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,10 +33,10 @@ class SignUpActivity : AppCompatActivity() {
         validateTextView()
         // Boton registrar
         buttonSignUp.setOnClickListener {
-            var email = textInputEmail.text.toString()
-            var password = textInputPassword.text.toString()
-            var user = textInputUser.text.toString()
-            if (user.isNotEmpty()) signUpWithEmailAndPassword(email,password) else snackBar("Rellena el campo usuario")
+            val email = textInputEmail.text.toString()
+            val password = textInputPassword.text.toString()
+            val user = textInputUser.text.toString()
+            if (user.isNotEmpty()) signUpWithEmailAndPassword(email,password,user) else snackBar("Rellena el campo usuario")
         }
         
     }
@@ -46,9 +53,10 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
-    private fun signUpWithEmailAndPassword(email: String, password: String){
+    private fun signUpWithEmailAndPassword(email: String, password: String, user: String){
         mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(this){ task ->
             if (task.isSuccessful){
+                createNewUserIntoDatabaseWithFirestore(email,user,mAuth.currentUser!!.uid)
                 mAuth.currentUser!!.sendEmailVerification().addOnCompleteListener(this){
                     snackBar(getString(R.string.snackbar_email_confirm_send), view = findViewById(R.id.activity_sign_up))
                     Handler(Looper.getMainLooper()).postDelayed(Runnable {
@@ -62,5 +70,21 @@ class SignUpActivity : AppCompatActivity() {
                 snackBar(getString(R.string.snackbar_unexpected_error_register), view = findViewById(R.id.activity_sign_up))
             }
         }
+    }
+
+    private fun createNewUserIntoDatabaseWithFirestore(email: String, user: String, uid: String){
+        val newUser = User(user,email,uid)
+        val hpNewUser = hashMapOf(
+            NamesCollection.COLLECTION_USER_NICK to newUser.userNick,
+            NamesCollection.COLLECTION_USER_EMAIL to newUser.email,
+            NamesCollection.COLLECTION_USER_UID to newUser.uid,
+            NamesCollection.COLLECTION_USER_FULL_NAME to newUser.fullName,
+            NamesCollection.COLLECTION_USER_DATE_CREATED_ON to newUser.dateUser,
+            NamesCollection.COLLECTION_USER_QUANTITY_BOOKS_USER_CREATE to newUser.quantityBooksUserCreate
+        )
+
+        mDb.collection(NamesCollection.COLLECTION_USER)
+            .add(hpNewUser)
+            .addOnSuccessListener { Log.i("Guardado","Se ha creado usuario en base de datos") }
     }
 }
