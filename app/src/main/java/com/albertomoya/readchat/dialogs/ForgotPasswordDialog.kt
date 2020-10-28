@@ -3,13 +3,14 @@ package com.albertomoya.readchat.dialogs
 import android.app.Activity
 import android.app.AlertDialog
 import android.app.Dialog
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.DialogFragment
 import com.albertomoya.readchat.R
-import com.albertomoya.readchat.others.isValidEmail
-import com.albertomoya.readchat.others.onChange
-import com.albertomoya.readchat.others.snackBar
-import com.albertomoya.readchat.others.toast
+import com.albertomoya.readchat.activities.login.SignInActivity
+import com.albertomoya.readchat.others.*
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -19,14 +20,10 @@ import kotlinx.android.synthetic.main.dialog_forgot_password.view.*
 
 class ForgotPasswordDialog: DialogFragment() {
 
+    // Firebase
     private val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
-    private lateinit var currentUser: FirebaseUser
 
-    private fun setUpCurrentUser(){
-        currentUser = mAuth.currentUser!!
-    }
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        //setUpCurrentUser()
         val view = activity!!.layoutInflater.inflate(R.layout.dialog_forgot_password, null)
         view.textInputForgotPasswordEmail.onChange {
             view.textInputForgotPasswordEmail.error = if (isValidEmail(it)) null else getString(R.string.error_email_is_not_valid)
@@ -39,16 +36,14 @@ class ForgotPasswordDialog: DialogFragment() {
             .setPositiveButton(getString(R.string.button_ok)){_,_ ->
                 val email = view.textInputForgotPasswordEmail.text.toString()
                 if (email.isNotEmpty()){
-                    mAuth.sendPasswordResetEmail(email).addOnSuccessListener{
-                        
-                    }
+                    activity!!.toast("Revisa tu correo: $email}")
+                        mAuth.sendPasswordResetEmail(email).addOnSuccessListener{}
                 } else {
-                    activity!!.toast("sadasdad")
+                    fragmentManager?.let { ForgotPasswordDialog().show(it,"") }
+                    activity!!.toast("Rellena el campo email, intentelo de nuevo")
                 }
             }
-            .setNegativeButton(getString(R.string.button_cancel)){_,_ ->
-
-            }
+            .setNegativeButton(getString(R.string.button_cancel)){_,_ ->}
             .create()
     }
 

@@ -24,11 +24,12 @@
     <string name="snackbar_confirm_email">Revisa tu correo, y confirma el email</string>
     <string name="snackbar_need_register">Error, compreba que hayas introducido tus datos correctamente</string>
     <string name="snackbar_email_confirm_send">Te acabamos de mandar un email de confirmacion</string>
+    <string name="snackbar_email_change_password">Te acabamos de mandar un email para tu cambio de contraseña vinculado al correo </string>
     <string name="snackbar_unexpected_error_register">Ha habido un error inesperado, vuelve a intentarlo</string>
 
     // Errors
     <string name="error_email_is_not_valid">El email no es valido</string>
-    <string name="error_email_is_empty">Rellena el campo email</string>
+    <string name="error_email_is_empty">Rellena el campo email, intentelo de nuevo</string>
     <string name="error_password_is_not_valid">1-minúscula, 1-mayúscula, 1-número y mínimo 6 caracteres</string>
     <string name="error_confirm_password_is_not_valid">Los campos CONTRASEÑA y CONFIRMAR CONTRASEÑA no son iguales</string>
 </resources>
