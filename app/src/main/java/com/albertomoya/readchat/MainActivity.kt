@@ -2,10 +2,12 @@ package com.albertomoya.readchat
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.widget.Toolbar
+import com.albertomoya.mylibrary.activities.ToolbarActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : ToolbarActivity() {
 
     // Firebase
         // Autentificador
@@ -14,8 +16,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        textViewUser.text = mAuth.currentUser!!.email
+        toolbarToLoad(toolbar as Toolbar)
 
     }
 }
