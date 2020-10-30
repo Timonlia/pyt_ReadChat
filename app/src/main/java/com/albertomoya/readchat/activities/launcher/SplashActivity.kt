@@ -22,22 +22,22 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         // Autentificador de Firebase
-        val mAuth = FirebaseAuth.getInstance()
+        // val mAuth = FirebaseAuth.getInstance()
         // Animaciones del splash
         val animation_arriba = AnimationUtils.loadAnimation(this,R.anim.desplazamiento_hacia_derecha)
         val animation_abajo = AnimationUtils.loadAnimation(this,R.anim.desplazamiento_hacia_abajo)
         imageViewLogoReadChat.startAnimation(animation_abajo)
         textViewAppNameSplashScreen.startAnimation(animation_arriba)
         Handler(Looper.getMainLooper()).postDelayed(Runnable {
-            if (mAuth.currentUser == null){
+            //if (mAuth.currentUser == null){
                 goToActivity<SignInActivity>{
                     overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
                 }
-            } else {
+            /*} else {
                 goToActivity<MainActivity>{
                     flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 }
-            }
+            }*/
             finish()
         },5000)
     }

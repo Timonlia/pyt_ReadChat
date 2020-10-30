@@ -32,6 +32,7 @@ class MainActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelectedL
         fragmentTransaction(HomeFragment())
         navView.menu.getItem(0).isChecked = true
     }
+
     private fun fragmentTransaction(fragment: Fragment){
         supportFragmentManager.beginTransaction()
             .replace(R.id.container, fragment)
@@ -49,6 +50,10 @@ class MainActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelectedL
         }
     }
 
+    private fun setUpHeaderInformation(){
+
+    }
+
     private fun setNavDrawer(){
         val toogle = ActionBarDrawerToggle(this,drawerLayout, _toolbar, R.string.nav_open_drawer, R.string.nav_close_drawer)
         toogle.isDrawerIndicatorEnabled = true
@@ -63,5 +68,10 @@ class MainActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelectedL
         return true
     }
 
-
+    override fun onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START))
+            drawerLayout.closeDrawer(GravityCompat.START)
+        else
+        super.onBackPressed()
+    }
 }
