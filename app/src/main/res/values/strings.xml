@@ -36,6 +36,7 @@
     // NavigationDrawer
     <string name="nav_open_drawer">Navigation is open</string>
     <string name="nav_close_drawer">Navigation is close</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    // Dialogs
+    <string name="logout_want_it">¿Quieres cerrar sesión?</string>
 </resources>

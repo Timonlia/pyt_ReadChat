@@ -1,11 +1,17 @@
 package com.albertomoya.readchat
 
+import android.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
+import androidx.fragment.app.Fragment
 import com.albertomoya.mylibrary.activities.ToolbarActivity
+import com.albertomoya.readchat.dialogs.LogoutDialog
+import com.albertomoya.readchat.fragments.*
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
@@ -23,6 +29,24 @@ class MainActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelectedL
         // SetUps
         toolbarToLoad(toolbar as Toolbar)
         setNavDrawer()
+        fragmentTransaction(HomeFragment())
+        navView.menu.getItem(0).isChecked = true
+    }
+    private fun fragmentTransaction(fragment: Fragment){
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.container, fragment)
+            .commit()
+    }
+
+    private fun loadFragmentById(id: Int){
+        when(id){
+            R.id.nav_home -> fragmentTransaction(HomeFragment())
+            R.id.nav_my_books -> fragmentTransaction(MyBooksFragment())
+            R.id.nav_create_book -> fragmentTransaction(AddBookFragment())
+            R.id.nav_chats -> fragmentTransaction(ChatFragment())
+            R.id.nav_profile -> fragmentTransaction(ProfileFragment())
+            R.id.nav_logout -> LogoutDialog().show(supportFragmentManager,"")
+        }
     }
 
     private fun setNavDrawer(){
@@ -34,6 +58,10 @@ class MainActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelectedL
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        loadFragmentById(item.itemId)
+        drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
+
+
 }

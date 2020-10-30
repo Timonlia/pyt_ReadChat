@@ -26,7 +26,6 @@ class SplashActivity : AppCompatActivity() {
         // Animaciones del splash
         val animation_arriba = AnimationUtils.loadAnimation(this,R.anim.desplazamiento_hacia_derecha)
         val animation_abajo = AnimationUtils.loadAnimation(this,R.anim.desplazamiento_hacia_abajo)
-        mAuth.signOut()
         imageViewLogoReadChat.startAnimation(animation_abajo)
         textViewAppNameSplashScreen.startAnimation(animation_arriba)
         Handler(Looper.getMainLooper()).postDelayed(Runnable {
