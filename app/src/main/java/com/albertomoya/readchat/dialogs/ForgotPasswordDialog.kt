@@ -36,7 +36,7 @@ class ForgotPasswordDialog: DialogFragment() {
             .setPositiveButton(getString(R.string.button_ok)){_,_ ->
                 val email = view.textInputForgotPasswordEmail.text.toString()
                 if (email.isNotEmpty()){
-                    activity!!.toast("Revisa tu correo: $email}")
+                    activity!!.toast("Revisa tu correo: $email")
                         mAuth.sendPasswordResetEmail(email).addOnSuccessListener{}
                 } else {
                     fragmentManager?.let { ForgotPasswordDialog().show(it,"") }

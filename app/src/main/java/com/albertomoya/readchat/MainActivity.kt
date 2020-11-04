@@ -3,6 +3,7 @@ package com.albertomoya.readchat
 
 
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -21,6 +22,7 @@ import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.layout_profile_toolbar.view.*
 import kotlinx.android.synthetic.main.nav_header.view.*
 
 
@@ -61,9 +63,31 @@ class MainActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelectedL
     private fun setUpHeaderInformation(){
         val email = navView.getHeaderView(0).textViewEmailNavHeader
         val name = navView.getHeaderView(0).textViewNameNavHeader
-
-        name?.let { name.text =  mAuth.currentUser!!.displayName}
+        val urlPhoto = navView.getHeaderView(0).imageProfile
+        val displayName = mAuth.currentUser!!.displayName
+        val urlPhotoProfile = mAuth.currentUser!!.photoUrl
         email?.let { email.text =  mAuth.currentUser!!.email}
+
+        if (!displayName.isNullOrEmpty()){
+            name.text = displayName
+        } else {
+            name.setTextColor(Color.RED)
+        }
+        if (urlPhotoProfile != null){
+            Glide
+                .with(this)
+                .load(mAuth.currentUser!!.photoUrl)
+                .circleCrop()
+                .override(100,100)
+                .into(urlPhoto)
+        } else {
+            Glide
+                .with(this)
+                .load(R.drawable.ic_person_white)
+                .circleCrop()
+                .override(100,100)
+                .into(urlPhoto)
+        }
     }
 
     private fun setNavDrawer(){
@@ -90,8 +114,8 @@ class MainActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelectedL
         menuInflater.inflate(R.menu.menu_toolbar_options, menu)
 
         val menuItem = menu!!.findItem(R.id.item_profile)
-        // val view: View = MenuItemCompat.getActionView(menuItem)
-        val view: View = menuItem.actionView
+        val view: View = MenuItemCompat.getActionView(menuItem)
+        // val view: View = menuItem.actionView
         val profileImage: CircleImageView = view.findViewById(R.id.toolbar_profile_image)
         val urlPhotoProfile = mAuth.currentUser!!.photoUrl
         if (urlPhotoProfile != null){
