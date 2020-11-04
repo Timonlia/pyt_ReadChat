@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
 import android.view.MenuItem
+import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
@@ -16,6 +17,7 @@ import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.nav_header.*
+import kotlinx.android.synthetic.main.nav_header.view.*
 
 class MainActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -30,6 +32,7 @@ class MainActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelectedL
         toolbarToLoad(toolbar as Toolbar)
         setNavDrawer()
         fragmentTransaction(HomeFragment())
+        setUpHeaderInformation()
         navView.menu.getItem(0).isChecked = true
     }
 
@@ -51,7 +54,11 @@ class MainActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelectedL
     }
 
     private fun setUpHeaderInformation(){
+        val email = navView.getHeaderView(0).textViewEmailNavHeader
+        val name = navView.getHeaderView(0).textViewNameNavHeader
 
+        name?.let { name.text =  mAuth.currentUser!!.displayName}
+        email?.let { email.text =  mAuth.currentUser!!.email}
     }
 
     private fun setNavDrawer(){
@@ -72,6 +79,7 @@ class MainActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelectedL
         if (drawerLayout.isDrawerOpen(GravityCompat.START))
             drawerLayout.closeDrawer(GravityCompat.START)
         else
-        super.onBackPressed()
+            LogoutDialog().show(supportFragmentManager,"")
+        // super.onBackPressed()
     }
 }
