@@ -20,7 +20,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_sign_in.*
-import java.util.*
 import kotlin.collections.HashMap
 
 
@@ -52,7 +51,8 @@ class SignInActivity : AppCompatActivity() {
         buttonSignInWithEmailAndPassword.setOnClickListener {
             val email = textInputEmail.text.toString()
             val password = textInputPassword.text.toString()
-            signInWithEmailAndPassword(email, password)
+            if (!email.isNullOrEmpty() || !password.isNullOrEmpty())
+                signInWithEmailAndPassword(email, password)
         }
         buttonSignInWithGoogle.setOnClickListener {
             startActivityForResult(mGoogleSignInClient.signInIntent, codeARGoogleSignIn)
