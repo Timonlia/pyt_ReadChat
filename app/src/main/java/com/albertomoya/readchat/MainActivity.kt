@@ -77,15 +77,11 @@ class MainActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelectedL
             Glide
                 .with(this)
                 .load(mAuth.currentUser!!.photoUrl)
-                .circleCrop()
-                .override(100,100)
                 .into(urlPhoto)
         } else {
             Glide
                 .with(this)
                 .load(R.drawable.ic_person_white)
-                .circleCrop()
-                .override(100,100)
                 .into(urlPhoto)
         }
     }

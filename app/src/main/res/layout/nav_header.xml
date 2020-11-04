@@ -9,8 +9,8 @@
     android:background="@drawable/background_header">
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageProfile"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
         android:src="@mipmap/ic_launcher"/>
     <TextView
         android:id="@+id/textViewNameNavHeader"
@@ -23,7 +23,7 @@
     <TextView
         android:id="@+id/textViewEmailNavHeader"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
         android:textSize="16sp"
         android:fontFamily="@font/roboto_medium_italic"/>
 

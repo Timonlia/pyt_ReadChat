@@ -11,7 +11,7 @@
     <color name="colorDivider">#BDBDBD</color>
     <color name="colorMaterial">#121212</color>
     <color name="colorWhite">#fff</color>
-
+    <color name="colorLight">#F1EFEF</color>
     <color name="color_background_button">#3A7DCA</color>
     <color name="colorGooglePlus">#DD4B39</color>
     <color name="colorGooglePlusDark">#B92D21</color>

@@ -12,7 +12,7 @@
         android:id="@+id/toolbar_profile_image"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        app:civ_circle_background_color="@color/colorPrimaryDark"
+        app:civ_circle_background_color="@color/colorLight"
         android:layout_marginRight="5dp"
         android:src="@mipmap/ic_launcher"/>
 
