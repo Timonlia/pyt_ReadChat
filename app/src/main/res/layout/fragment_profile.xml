@@ -30,7 +30,7 @@
                 android:src="@drawable/ic_person_white"
                 app:civ_circle_background_color="@color/colorLight"
                 android:layout_marginTop="130dp"
-                app:civ_border_color="@color/colorWhite"
+                app:civ_border_color="@color/colorSecondaryText"
                 app:civ_border_width="5dp"/>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

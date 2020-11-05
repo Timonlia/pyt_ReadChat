@@ -54,6 +54,7 @@ class MainActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelectedL
             R.id.nav_home -> fragmentTransaction(HomeFragment())
             R.id.nav_my_books -> fragmentTransaction(MyBooksFragment())
             R.id.nav_create_book -> fragmentTransaction(AddBookFragment())
+            R.id.nav_fav_books -> fragmentTransaction(FavouriteBooksFragment())
             R.id.nav_chats -> fragmentTransaction(ChatFragment())
             R.id.nav_profile -> fragmentTransaction(ProfileFragment())
             R.id.nav_logout -> LogoutDialog().show(supportFragmentManager, "")

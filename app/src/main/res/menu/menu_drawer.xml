@@ -16,6 +16,10 @@
             android:icon="@drawable/ic_add_book_blue"
             android:title="Create Book"/>
         <item
+            android:id="@+id/nav_fav_books"
+            android:icon="@drawable/ic_fav_books"
+            android:title="FavBooks"/>
+        <item
             android:id="@+id/nav_chats"
             android:icon="@drawable/ic_chat_blue"
             android:title="Chats"/>
