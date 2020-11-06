@@ -3,8 +3,7 @@ package com.albertomoya.readchat.activities.launcher
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.albertomoya.readchat.MainActivity
-import com.albertomoya.readchat.activities.login.SignInActivity
+import com.albertomoya.readchat.activities.main.MainActivity
 import com.albertomoya.readchat.others.goToActivity
 import com.google.firebase.auth.FirebaseAuth
 

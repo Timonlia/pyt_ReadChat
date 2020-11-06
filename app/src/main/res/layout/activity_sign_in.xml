@@ -71,8 +71,8 @@
                 android:layout_marginTop="20dp">
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:src="@drawable/ic_email"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="5dp"/>
@@ -85,9 +85,10 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/textInputEmail"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="wrap_content"
                         android:hint="@string/edit_text_hint_email"
                         android:inputType="textEmailAddress"
+                        android:textSize="15sp"
                         android:textColor="@color/colorSecondaryText"
                         android:textColorHint="@color/colorSecondaryText"
                         android:backgroundTint="@color/colorSecondaryText"/>
@@ -105,10 +106,10 @@
                 android:layout_marginTop="5dp">
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:src="@drawable/ic_password"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="24dp"
                     android:layout_marginRight="5dp"/>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -122,6 +123,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/edit_text_hint_password"
+                        android:textSize="15sp"
                         android:inputType="textPassword"
                         android:textColor="@color/colorSecondaryText"
                         android:textColorHint="@color/colorSecondaryText"
@@ -146,9 +148,9 @@
             <Button
                 android:id="@+id/buttonSignInWithEmailAndPassword"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="45dp"
                 android:text="@string/button_iniciar_sesión_email"
-                android:background="@color/colorPrimary"
+                android:background="@drawable/button_ripple_register"
                 android:textColor="@color/colorWhite"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="28dp"

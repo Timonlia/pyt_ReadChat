@@ -1,16 +1,13 @@
 package com.albertomoya.readchat.activities.launcher
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.animation.AnimationUtils
-import com.albertomoya.readchat.MainActivity
 import com.albertomoya.readchat.R
 import com.albertomoya.readchat.activities.login.SignInActivity
 import com.albertomoya.readchat.others.goToActivity
-import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : AppCompatActivity() {

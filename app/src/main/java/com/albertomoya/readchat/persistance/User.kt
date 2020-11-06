@@ -5,24 +5,27 @@ import android.annotation.SuppressLint
 import java.text.SimpleDateFormat
 import java.util.*
 
-class User constructor(private var userNickName: String, private var emailUser: String, private var uidUser: String) {
+class User constructor() {
     @SuppressLint("SimpleDateFormat")
     private val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
-
-    var userNick: String = ""
+    var nick: String = ""
     var email: String = ""
-    var uid: String = ""
+    var UID: String = ""
     var fullName: String = ""
-    var dateUser = sdf.format(Date())
-    var quantityBooksUserCreate: Int = 0
+    var createdOn = sdf.format(Date())
+    var quantityBooksUserCreated: Int = 0
+    var quantityFollowers: Int = 0
+    var descriptionUser: String = ""
 
     init {
-        this.userNick = userNickName
-        this.email = emailUser
-        this.uid = uidUser
+        this.nick
+        this.email
+        this.UID
         this.fullName = ""
-        this.dateUser
-        this.quantityBooksUserCreate = 0
+        this.createdOn
+        this.quantityBooksUserCreated = 0
+        this.quantityFollowers = 0
+        this.descriptionUser = ""
     }
 
 }

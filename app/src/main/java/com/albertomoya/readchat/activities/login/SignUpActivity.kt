@@ -11,6 +11,8 @@ import com.albertomoya.readchat.R
 import com.albertomoya.readchat.others.*
 import com.albertomoya.readchat.persistance.User
 import com.albertomoya.readchat.utilities.NamesCollection
+import com.albertomoya.readchat.utilities.providers.AuthProvider
+import com.albertomoya.readchat.utilities.providers.UsersProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_sign_up.*
@@ -25,6 +27,8 @@ class SignUpActivity : AppCompatActivity() {
     private val mDb = FirebaseFirestore.getInstance()
     // Variables
     private lateinit var newUser: User
+    private val dbProvider = AuthProvider()
+    private val usrProvider = UsersProvider()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,7 +60,7 @@ class SignUpActivity : AppCompatActivity() {
     private fun signUpWithEmailAndPassword(email: String, password: String, user: String){
         mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(this){ task ->
             if (task.isSuccessful){
-                createNewUserIntoDatabaseWithFirestore(email,user,mAuth.currentUser!!.uid)
+                createNewUserIntoDatabaseWithFirestore(email,user,dbProvider.getUid().toString())
                 mAuth.currentUser!!.sendEmailVerification().addOnCompleteListener(this){
                     snackBar(getString(R.string.snackbar_email_confirm_send), view = findViewById(R.id.activity_sign_up))
                     Handler(Looper.getMainLooper()).postDelayed(Runnable {
@@ -73,18 +77,10 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun createNewUserIntoDatabaseWithFirestore(email: String, user: String, uid: String){
-        val newUser = User(user,email,uid)
-        val hpNewUser = hashMapOf(
-            NamesCollection.COLLECTION_USER_NICK to newUser.userNick,
-            NamesCollection.COLLECTION_USER_EMAIL to newUser.email,
-            NamesCollection.COLLECTION_USER_UID to newUser.uid,
-            NamesCollection.COLLECTION_USER_FULL_NAME to newUser.fullName,
-            NamesCollection.COLLECTION_USER_DATE_CREATED_ON to newUser.dateUser,
-            NamesCollection.COLLECTION_USER_QUANTITY_BOOKS_USER_CREATE to newUser.quantityBooksUserCreate
-        )
-
-        mDb.collection(NamesCollection.COLLECTION_USER)
-            .add(hpNewUser)
-            .addOnSuccessListener { Log.i("Guardado","Se ha creado usuario en base de datos") }
+        val newUser = User()
+        newUser.nick = user
+        newUser.email = email
+        newUser.UID = uid
+        usrProvider.createUser(newUser).addOnSuccessListener { Log.i("Guardado","Se ha creado usuario en base de datos") }
     }
 }

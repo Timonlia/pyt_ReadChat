@@ -4,13 +4,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.albertomoya.readchat.MainActivity
+import com.albertomoya.readchat.activities.main.MainActivity
 import com.albertomoya.readchat.R
 import com.albertomoya.readchat.dialogs.ForgotPasswordDialog
 import com.albertomoya.readchat.others.goToActivity
 import com.albertomoya.readchat.others.snackBar
 import com.albertomoya.readchat.persistance.User
+import com.albertomoya.readchat.utilities.providers.AuthProvider
 import com.albertomoya.readchat.utilities.NamesCollection
+import com.albertomoya.readchat.utilities.providers.UsersProvider
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -32,6 +34,8 @@ class SignInActivity : AppCompatActivity() {
     // Variables
     private val codeARGoogleSignIn = 1
     private val newUser: Map<User, Any> = HashMap()
+    private val dbProvider = AuthProvider()
+    private val usrProvider = UsersProvider()
     // onCreate
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,7 +65,7 @@ class SignInActivity : AppCompatActivity() {
 
     // Create account with email and password
     private fun signInWithEmailAndPassword(email: String, password: String){
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
+        dbProvider.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
             if (task.isSuccessful){
                 if (mAuth.currentUser!!.isEmailVerified){
                     goToActivity<MainActivity>{
@@ -73,7 +77,7 @@ class SignInActivity : AppCompatActivity() {
                     )
                 } else {
                    snackBar(
-                       getString(R.string.snackbar_confirm_email) + " " + mAuth.currentUser!!.email,
+                       getString(R.string.snackbar_confirm_email) + " " + dbProvider.getEmail().toString(),
                        view = findViewById(
                            R.id.activity_sign_in
                        ),
@@ -119,30 +123,19 @@ class SignInActivity : AppCompatActivity() {
     }
     // Create register into Database to new User
     private fun createNewUserIntoDatabaseWithFirestore(email: String, user: String, uid: String){
-        val newUser = User(user,email,uid)
-        val hpNewUser = hashMapOf(
-            NamesCollection.COLLECTION_USER_NICK to newUser.userNick,
-            NamesCollection.COLLECTION_USER_EMAIL to newUser.email,
-            NamesCollection.COLLECTION_USER_UID to newUser.uid,
-            NamesCollection.COLLECTION_USER_FULL_NAME to newUser.fullName,
-            NamesCollection.COLLECTION_USER_DATE_CREATED_ON to newUser.dateUser,
-            NamesCollection.COLLECTION_USER_QUANTITY_BOOKS_USER_CREATE to newUser.quantityBooksUserCreate
-        )
-
-        mDb.collection(NamesCollection.COLLECTION_USER)
-            .add(hpNewUser)
-            .addOnSuccessListener { Log.i("Guardado","Se ha creado usuario en base de datos") }
+        val newUser = User()
+        newUser.nick = user
+        newUser.email = email
+        newUser.UID = uid
+        usrProvider.createUser(newUser).addOnSuccessListener { Log.i("Guardado","Se ha creado usuario en base de datos") }
     }
 
     // void to search into database if exists current user into database
     private fun searchIfDataUserIsIntoDatabase(){
-        mDb.collection(NamesCollection.COLLECTION_USER)
-            .whereEqualTo(NamesCollection.COLLECTION_USER_EMAIL, mAuth.currentUser!!.email)
-            .get()
-            .addOnSuccessListener { documents ->
-                if (documents.isEmpty){
-                    createNewUserIntoDatabaseWithFirestore(mAuth.currentUser!!.email!!,mAuth.currentUser!!.displayName!!,mAuth.currentUser!!.uid)
-                }
+        usrProvider.getUser(dbProvider.getUid().toString()).addOnSuccessListener{
+            if (!it.exists()){
+                createNewUserIntoDatabaseWithFirestore(dbProvider.getEmail().toString(),dbProvider.getDisplayName().toString(),dbProvider.getUid().toString())
+            }
         }
     }
 

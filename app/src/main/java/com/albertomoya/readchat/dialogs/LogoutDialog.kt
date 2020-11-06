@@ -5,7 +5,6 @@ import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
-import com.albertomoya.readchat.MainActivity
 import com.albertomoya.readchat.R
 import com.albertomoya.readchat.activities.login.SignInActivity
 import com.albertomoya.readchat.others.goToActivity

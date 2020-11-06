@@ -15,7 +15,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
             <ImageView
-                android:id="@+id/imageProfileFragment"
+                android:layout_width="match_parent"
+                android:layout_height="204dp"
+                android:background="@color/colorSecondaryText"
+                android:scaleType="centerCrop"
+                app:layout_collapseMode="parallax"
+                android:transitionName=""/>
+            <ImageView
+                android:id="@+id/imageProfileBackgroundFragment"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:src="@drawable/image_background_profile"
@@ -25,12 +32,87 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="match_parent"
-                android:id="@+id/imageProfileFragment2"
-                android:layout_height="140dp"
+                android:id="@+id/imageProfileFragment"
+                android:layout_height="120dp"
                 android:src="@drawable/ic_person_white"
                 app:civ_circle_background_color="@color/colorLight"
-                android:layout_marginTop="130dp"
+                android:layout_marginTop="135dp"
                 app:civ_border_color="@color/colorSecondaryText"
                 app:civ_border_width="5dp"/>
+            <Button
+                android:id="@+id/buttonEditProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="200dp"
+                android:layout_gravity="right"
+                android:textSize="10sp"
+                android:layout_marginEnd="20dp"
+                android:text="@string/edit_profile"
+                android:background="@drawable/edit_text_profile_background"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="210dp"
+                android:layout_gravity="left"
+                android:layout_marginStart="10dp">
+                <TextView
+                    android:id="@+id/textViewFollowers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/roboto_medium_italic"
+                    android:text="@string/followers"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="230dp"
+                android:layout_gravity="left"
+                android:layout_marginStart="10dp">
+                <TextView
+                    android:id="@+id/textViewBooks"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/roboto_medium_italic"
+                    android:text="@string/books"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="230dp"
+                android:layout_gravity="left"
+                android:layout_marginStart="240dp">
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="260dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/textViewNickUser"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimary"
+                    android:background="@drawable/edit_text_profile_background"
+                    android:text="Nick Usuario"
+                    android:textAlignment="center"
+                    />
+                <EditText
+                    android:id="@+id/textViewDescriptionUser"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/edit_text_profile_background"
+                    android:maxLength="200"
+                    android:textSize="12sp"
+                    android:textAlignment="center"
+                    android:layout_marginHorizontal="10dp"
+                    android:text="Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500. Hola como estas bien y eso."/>
+
+            </LinearLayout>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

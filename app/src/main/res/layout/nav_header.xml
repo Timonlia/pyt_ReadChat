@@ -6,7 +6,7 @@
     android:gravity="bottom"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="@drawable/background_header">
+    android:background="@drawable/image_background_profile">
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageProfile"
         android:layout_width="85dp"

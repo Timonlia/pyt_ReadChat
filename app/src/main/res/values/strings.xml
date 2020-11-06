@@ -42,6 +42,11 @@
     <string name="revise_you_email">Revisa tu correo:</string>
     // Header
     <string name="complete_you_profile">Completa tu perfil</string>
+    // Fragment Profile
+    <string name="followers">Seguidores: </string>
+    <string name="books">Libros: </string>
+    <string name="edit_profile">Editar Perfil</string>
+    <string name="created_on">Con nosotros desde:</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
