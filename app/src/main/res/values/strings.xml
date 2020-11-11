@@ -19,7 +19,12 @@
     <string name="button_ok">Aceptar</string>
     <string name="button_cancel">Cancelar</string>
     <string name="title_dialog_forgot_password">Restablecer Contraseña</string>
-
+    <string name="nickname">Nickname</string>
+    <string name="fullname">Nombre completo</string>
+    <string name="description">Descripción</string>
+    <string name="save_changes_edit_profile">Guardar Cambios</string>
+    <string name="back_to_home">Volver al inicio</string>
+    <string name="want_save_changes">¿Deseas salir y guardar los cambios?</string>
     // Snackbars
     <string name="snackbar_confirm_email">Revisa tu correo, y confirma el email</string>
     <string name="snackbar_need_register">Error, compreba que hayas introducido tus datos correctamente</string>
@@ -47,6 +52,6 @@
     <string name="books">Libros: </string>
     <string name="edit_profile">Editar Perfil</string>
     <string name="created_on">Con nosotros desde:</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="complete_your_profile">Completa tu perfil</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.albertomoya.readchat.R
+import com.albertomoya.readchat.activities.others.EditProfileActivity
+import com.albertomoya.readchat.others.goToActivity
 import com.albertomoya.readchat.persistance.User
 import com.albertomoya.readchat.utilities.NamesCollection
 import com.bumptech.glide.Glide
@@ -25,6 +27,7 @@ class ProfileFragment : Fragment() {
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_profile, container, false)
         setUpProfileView(rootView)
+        setOnClickProfileFragment(rootView)
         return rootView
     }
 
@@ -50,7 +53,7 @@ class ProfileFragment : Fragment() {
 
     private fun setOnClickProfileFragment(view: View){
         view.buttonEditProfile.setOnClickListener {
-
+            activity!!.goToActivity<EditProfileActivity> {  }
         }
     }
 
