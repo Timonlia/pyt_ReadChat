@@ -24,7 +24,11 @@
     <string name="description">Descripción</string>
     <string name="save_changes_edit_profile">Guardar Cambios</string>
     <string name="back_to_home">Volver al inicio</string>
-    <string name="want_save_changes">¿Deseas salir y guardar los cambios?</string>
+    <string name="save_changes">Guarda los cambios para salir</string>
+    <string name="changes_save_correctly">Los cambios se han guardado correctamente</string>
+    <string name="not_have_changes_to_save">No hay cambios que guardar</string>
+    <string name="cant_save_changes">No se han podido guardar los cambios, intentelo mas tarde.</string>
+
     // Snackbars
     <string name="snackbar_confirm_email">Revisa tu correo, y confirma el email</string>
     <string name="snackbar_need_register">Error, compreba que hayas introducido tus datos correctamente</string>

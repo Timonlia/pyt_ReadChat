@@ -24,9 +24,7 @@ class SignUpActivity : AppCompatActivity() {
 
     // Firebase
     private val mAuth = FirebaseAuth.getInstance()
-    private val mDb = FirebaseFirestore.getInstance()
     // Variables
-    private lateinit var newUser: User
     private val dbProvider = AuthProvider()
     private val usrProvider = UsersProvider()
 
@@ -58,7 +56,7 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun signUpWithEmailAndPassword(email: String, password: String, user: String){
-        mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(this){ task ->
+        dbProvider.signInWithEmailAndPassword(email,password).addOnCompleteListener(this){ task ->
             if (task.isSuccessful){
                 createNewUserIntoDatabaseWithFirestore(email,user,dbProvider.getUid().toString())
                 mAuth.currentUser!!.sendEmailVerification().addOnCompleteListener(this){
