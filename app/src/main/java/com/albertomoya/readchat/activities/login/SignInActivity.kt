@@ -113,6 +113,7 @@ class SignInActivity : AppCompatActivity() {
                 goToActivity<MainActivity>{
                     flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 }
+                finish()
                 overridePendingTransition(
                     android.R.anim.slide_in_left,
                     android.R.anim.slide_out_right
@@ -122,11 +123,12 @@ class SignInActivity : AppCompatActivity() {
         }
     }
     // Create register into Database to new User
-    private fun createNewUserIntoDatabaseWithFirestore(email: String, user: String, uid: String){
+    private fun createNewUserIntoDatabaseWithFirestore(email: String, user: String, uid: String, photoUrl: String){
         val newUser = User()
         newUser.nick = user
         newUser.email = email
         newUser.UID = uid
+        newUser.photoUrl = photoUrl
         usrProvider.createUser(newUser).addOnSuccessListener { Log.i("Guardado","Se ha creado usuario en base de datos") }
     }
 
@@ -134,7 +136,7 @@ class SignInActivity : AppCompatActivity() {
     private fun searchIfDataUserIsIntoDatabase(){
         usrProvider.getUser(dbProvider.getUid().toString()).addOnSuccessListener{
             if (!it.exists()){
-                createNewUserIntoDatabaseWithFirestore(dbProvider.getEmail().toString(),dbProvider.getDisplayName().toString(),dbProvider.getUid().toString())
+                createNewUserIntoDatabaseWithFirestore(dbProvider.getEmail().toString(),dbProvider.getDisplayName().toString(),dbProvider.getUid().toString(),dbProvider.getPhotoUrl().toString())
             }
         }
     }

@@ -17,11 +17,18 @@ import com.albertomoya.mylibrary.activities.ToolbarActivity
 import com.albertomoya.readchat.R
 import com.albertomoya.readchat.dialogs.LogoutDialog
 import com.albertomoya.readchat.fragments.*
+import com.albertomoya.readchat.utilities.NamesCollection
+import com.albertomoya.readchat.utilities.providers.AuthProvider
+import com.albertomoya.readchat.utilities.providers.UsersProvider
 import com.bumptech.glide.Glide
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.EventListener
+import com.google.firebase.firestore.FirebaseFirestoreException
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_profile.view.*
 import kotlinx.android.synthetic.main.nav_header.view.*
 
 
@@ -30,7 +37,9 @@ class MainActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelectedL
     // Firebase
         // Autentificador
         private val mAuth = FirebaseAuth.getInstance()
-
+    // Variables
+    private val authProvider = AuthProvider()
+    private val usrProvider = UsersProvider()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -39,6 +48,7 @@ class MainActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelectedL
         setNavDrawer()
         fragmentTransaction(HomeFragment())
         setUpHeaderInformation()
+        listenerChangesCollection()
         navView.menu.getItem(0).isChecked = true
     }
 
@@ -64,25 +74,22 @@ class MainActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelectedL
         val email = navView.getHeaderView(0).textViewEmailNavHeader
         val name = navView.getHeaderView(0).textViewNameNavHeader
         val urlPhoto = navView.getHeaderView(0).imageProfile
-        val displayName = mAuth.currentUser!!.displayName
-        val urlPhotoProfile = mAuth.currentUser!!.photoUrl
-        email?.let { email.text =  mAuth.currentUser!!.email}
-
-        if (!displayName.isNullOrEmpty()){
-            name.text = displayName
-        } else {
-            name.setTextColor(Color.RED)
-        }
-        if (urlPhotoProfile != null){
+        var background = navView.getHeaderView(0).headerBackground
+        usrProvider.getUser(authProvider.getUid().toString()).addOnSuccessListener {
+            name.text = it[NamesCollection.COLLECTION_USER_NICK].toString()
+            email.text = it[NamesCollection.COLLECTION_USER_EMAIL].toString()
+            val urlPhotoProfile = it[NamesCollection.COLLECTION_USER_PHOTO_URL].toString()
+            val urlPhotoProfileBackground = it[NamesCollection.COLLECTION_USER_PHOTO_BACKGROUND].toString()
             Glide
                 .with(this)
-                .load(mAuth.currentUser!!.photoUrl)
+                .load(urlPhotoProfile)
                 .into(urlPhoto)
-        } else {
             Glide
                 .with(this)
-                .load(R.drawable.ic_person_white)
-                .into(urlPhoto)
+                .load(urlPhotoProfileBackground)
+                .centerCrop()
+                .override(400, 400)
+                .into(background)
         }
     }
 
@@ -106,6 +113,16 @@ class MainActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelectedL
         return true
     }
 
+    private fun listenerChangesCollection(){
+        usrProvider.getUserForSnapshot(authProvider.getUid().toString()).addSnapshotListener(object : java.util.EventListener,
+            EventListener<DocumentSnapshot> {
+            override fun onEvent(snapshot: DocumentSnapshot?, exception: FirebaseFirestoreException?) {
+                setUpHeaderInformation()
+
+            }
+        })
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_toolbar_options, menu)
 
@@ -113,19 +130,19 @@ class MainActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelectedL
         val view: View = MenuItemCompat.getActionView(menuItem)
         // val view: View = menuItem.actionView
         val profileImage: CircleImageView = view.findViewById(R.id.toolbar_profile_image)
-        val urlPhotoProfile = mAuth.currentUser!!.photoUrl
-        if (urlPhotoProfile != null){
-            Glide
-                .with(this)
-                .load(mAuth.currentUser!!.photoUrl)
-                .into(profileImage)
-        }else{
-            Glide
-                .with(this)
-                .load(R.drawable.ic_person_white)
-                .into(profileImage)
-        }
-
+        val doc = usrProvider.getUserForSnapshot(authProvider.getUid().toString())
+        doc.addSnapshotListener(object : java.util.EventListener,
+            EventListener<DocumentSnapshot> {
+            override fun onEvent(snapshot: DocumentSnapshot?, exception: FirebaseFirestoreException?) {
+                usrProvider.getUser(authProvider.getUid().toString()).addOnSuccessListener {
+                    val urlPhotoProfile = it[NamesCollection.COLLECTION_USER_PHOTO_URL].toString()
+                    Glide
+                        .with(view.context)
+                        .load(urlPhotoProfile)
+                        .into(profileImage)
+                }
+            }
+        })
         profileImage.setOnClickListener { fragmentTransaction(ProfileFragment()) }
 
         return super.onCreateOptionsMenu(menu)
@@ -145,4 +162,6 @@ class MainActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelectedL
             LogoutDialog().show(supportFragmentManager, "")
         // super.onBackPressed()
     }
+
+
 }

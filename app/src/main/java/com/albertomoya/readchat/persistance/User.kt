@@ -16,6 +16,8 @@ class User constructor() {
     var quantityBooksUserCreated: Int = 0
     var quantityFollowers: Int = 0
     var descriptionUser: String = ""
+    var photoUrl = ""
+    var photoBackground = ""
 
     init {
         this.nick
@@ -26,6 +28,8 @@ class User constructor() {
         this.quantityBooksUserCreated = 0
         this.quantityFollowers = 0
         this.descriptionUser = ""
+        this.photoUrl = ""
+        this.photoBackground = ""
     }
 
 }

@@ -11,5 +11,7 @@ class NamesCollection {
         const val COLLECTION_USER_QUANTITY_BOOKS_USER_CREATE = "quantityBooksUserCreated"
         const val COLLECTION_USER_QUANTITY_FOLLOWERS = "quantityFollowers"
         const val COLLECTION_USER_DESCRIPTION = "descriptionUser"
+        const val COLLECTION_USER_PHOTO_URL = "photoUrl"
+        const val COLLECTION_USER_PHOTO_BACKGROUND = "photoBackground"
     }
 }
