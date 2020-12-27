@@ -56,7 +56,7 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun signUpWithEmailAndPassword(email: String, password: String, user: String){
-        dbProvider.signInWithEmailAndPassword(email,password).addOnCompleteListener(this){ task ->
+        dbProvider.signUpWithEmailAndPassword(email,password).addOnCompleteListener(this){ task ->
             if (task.isSuccessful){
                 createNewUserIntoDatabaseWithFirestore(email,user,dbProvider.getUid().toString())
                 mAuth.currentUser!!.sendEmailVerification().addOnCompleteListener(this){
@@ -70,6 +70,7 @@ class SignUpActivity : AppCompatActivity() {
                 }
             } else {
                 snackBar(getString(R.string.snackbar_unexpected_error_register), view = findViewById(R.id.activity_sign_up))
+                Log.e("ERROR SignUp",task.exception.toString() + dbProvider.getEmail())
             }
         }
     }

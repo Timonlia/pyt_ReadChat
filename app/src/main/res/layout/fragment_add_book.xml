@@ -4,15 +4,87 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".fragments.AddBookFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add Book Fragment"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+
+
+    <ImageView
+        android:id="@+id/imageCreateBook"
+        android:layout_width="130dp"
+        android:layout_height="180dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_logo_provisional_blanco"
+        app:layout_constraintEnd_toStartOf="@+id/editTextTitleCreateBook"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <EditText
+        android:id="@+id/editTextTitleCreateBook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="@string/book_title"
+        android:textSize="15sp"
+        android:maxLength="30"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageCreateBook"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextDescriptionCreateBook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="@string/description"
+        android:textSize="15sp"
+        android:maxLength="150"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintStart_toEndOf="@+id/imageCreateBook"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTitleCreateBook" />
+
+    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+        android:id="@+id/spinnerSearchableCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageCreateBook" />
+
+    <Button
+        android:id="@+id/buttonAddBook"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/add_book"
+        android:background="@drawable/button_ripple"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <CheckBox
+        android:id="@+id/checkBoxChat"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/check_box_chat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerSearchableCategory" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+

@@ -22,8 +22,8 @@ inline fun <reified T : Activity>Activity.goToActivity(noinline init: Intent.() 
 }
 fun Activity.toast(message: CharSequence, duration: Int = Toast.LENGTH_LONG) {Toast.makeText(this,message,duration).show()}
 fun Activity.snackBar(message: CharSequence, view: View? = findViewById(R.id.container),
-                      duration: Int = Snackbar.LENGTH_LONG, action: String? = null,
-                      actionEvt: (v: View) -> Unit = {}){
+                       duration: Int = Snackbar.LENGTH_LONG, action: String? = null,
+                       actionEvt: (v: View) -> Unit = {}){
     if (view != null){
         val snackbar = Snackbar.make(view!!,message,duration)
         if (!action.isNullOrEmpty()){

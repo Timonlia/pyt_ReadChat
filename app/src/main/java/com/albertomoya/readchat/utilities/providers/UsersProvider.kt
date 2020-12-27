@@ -42,5 +42,10 @@ class UsersProvider {
         updateProfileMap[NamesCollection.COLLECTION_USER_PHOTO_BACKGROUND] = user.photoBackground
         return mDb.document(user.UID).update(updateProfileMap)
     }
+    fun updateUserBooks(user: User): Task<Void> {
+        val updateBooks = HashMap<String, Any>()
+        updateBooks[NamesCollection.COLLECTION_USER_QUANTITY_BOOKS_USER_CREATE] = user.quantityBooksUserCreated
+        return mDb.document(user.UID).update(updateBooks)
+    }
 
 }

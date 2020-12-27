@@ -91,13 +91,13 @@ class ProfileFragment : Fragment() {
                 val urlPhotoProfile = it[NamesCollection.COLLECTION_USER_PHOTO_URL].toString()
                 val urlPhotoProfileBackground = it[NamesCollection.COLLECTION_USER_PHOTO_BACKGROUND].toString()
                 Glide
-                    .with(this)
+                    .with(rootView.context)
                     .load(urlPhotoProfile)
                     .circleCrop()
                     .override(350, 350)
                     .into(rootView.imageProfileFragment)
                 Glide
-                    .with(this)
+                    .with(rootView.context)
                     .load(urlPhotoProfileBackground)
                     .centerCrop()
                     .override(400,400)
@@ -123,6 +123,7 @@ class ProfileFragment : Fragment() {
                         mStorage.getStorage().downloadUrl.addOnSuccessListener { it1 ->
                             val uri = it1.toString()
                             updatePhotoUrl(uri, IMAGE_PROFILE)
+                            Log.i("IMAGEN_URL",uri)
                         }
                         Log.i("IMAGE SAVE","Imagen guardada correctamente")
                     } else {

@@ -28,13 +28,15 @@
     <string name="changes_save_correctly">Los cambios se han guardado correctamente</string>
     <string name="not_have_changes_to_save">No hay cambios que guardar</string>
     <string name="cant_save_changes">No se han podido guardar los cambios, intentelo mas tarde.</string>
-
+    <string name="book_title">Título</string>
+    <string name="book_category">Categoría</string>
     // Snackbars
     <string name="snackbar_confirm_email">Revisa tu correo, y confirma el email</string>
     <string name="snackbar_need_register">Error, compreba que hayas introducido tus datos correctamente</string>
     <string name="snackbar_email_confirm_send">Te acabamos de mandar un email de confirmacion</string>
     <string name="snackbar_email_change_password">Te acabamos de mandar un email para tu cambio de contraseña vinculado al correo </string>
     <string name="snackbar_unexpected_error_register">Ha habido un error inesperado, vuelve a intentarlo</string>
+    <string name="write_all_data">Porfavor rellena los campos</string>
 
     // Errors
     <string name="error_email_is_not_valid">El email no es valido</string>
@@ -58,4 +60,7 @@
     <string name="created_on">Con nosotros desde:</string>
     <string name="complete_your_profile">Completa tu perfil</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_book">Crear libro</string>
+    <string name="check_box_chat">¿Deseas agregar chat?</string>
+
 </resources>

@@ -40,9 +40,11 @@ class MainActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelectedL
     // Variables
     private val authProvider = AuthProvider()
     private val usrProvider = UsersProvider()
+    private var fragment = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        fragment = 0
         // SetUps
         toolbarToLoad(toolbar as Toolbar)
         setNavDrawer()
@@ -60,12 +62,18 @@ class MainActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelectedL
 
     private fun loadFragmentById(id: Int){
         when(id){
-            R.id.nav_home -> fragmentTransaction(HomeFragment())
-            R.id.nav_my_books -> fragmentTransaction(MyBooksFragment())
-            R.id.nav_create_book -> fragmentTransaction(AddBookFragment())
-            R.id.nav_fav_books -> fragmentTransaction(FavouriteBooksFragment())
-            R.id.nav_chats -> fragmentTransaction(ChatFragment())
-            R.id.nav_profile -> fragmentTransaction(ProfileFragment())
+            R.id.nav_home -> { fragmentTransaction(HomeFragment())
+                fragment = 0 }
+            R.id.nav_my_books -> { fragmentTransaction(MyBooksFragment())
+                fragment = 1 }
+            R.id.nav_create_book -> { fragmentTransaction(AddBookFragment())
+                fragment = 1 }
+            R.id.nav_fav_books -> { fragmentTransaction(FavouriteBooksFragment())
+                fragment = 1 }
+            R.id.nav_chats -> { fragmentTransaction(ChatFragment())
+                fragment = 1 }
+            R.id.nav_profile -> { fragmentTransaction(ProfileFragment())
+                fragment = 1 }
             R.id.nav_logout -> LogoutDialog().show(supportFragmentManager, "")
         }
     }
@@ -159,8 +167,12 @@ class MainActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelectedL
         if (drawerLayout.isDrawerOpen(GravityCompat.START))
             drawerLayout.closeDrawer(GravityCompat.START)
         else
-            LogoutDialog().show(supportFragmentManager, "")
+            if (fragment == 1)
+                loadFragmentById(R.id.nav_home)
+            else
+                LogoutDialog().show(supportFragmentManager, "")
         // super.onBackPressed()
+
     }
 
 

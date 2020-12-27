@@ -12,6 +12,10 @@ class AuthProvider {
     fun signInWithEmailAndPassword(email: String, password: String): Task<AuthResult> {
         return mAuth.signInWithEmailAndPassword(email, password)
     }
+    // SignUp
+    fun signUpWithEmailAndPassword(email: String, password: String): Task<AuthResult> {
+        return mAuth.createUserWithEmailAndPassword(email,password)
+    }
     // Uid
     fun getUid(): String? {
         return if (mAuth.currentUser != null)
