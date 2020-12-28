@@ -151,14 +151,19 @@ class MainActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelectedL
                 }
             }
         })
-        profileImage.setOnClickListener { fragmentTransaction(ProfileFragment()) }
+        profileImage.setOnClickListener {
+            navView.menu.findItem(R.id.nav_profile).isChecked = true
+            navView.menu.getItem(0).isChecked = false
+            fragmentTransaction(ProfileFragment())
+            fragment = 1
+
+        }
 
         return super.onCreateOptionsMenu(menu)
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.item_profile -> fragmentTransaction(ProfileFragment())
-            // R.id.menu_three ->
         }
         return super.onOptionsItemSelected(item)
     }
@@ -167,10 +172,14 @@ class MainActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelectedL
         if (drawerLayout.isDrawerOpen(GravityCompat.START))
             drawerLayout.closeDrawer(GravityCompat.START)
         else
-            if (fragment == 1)
+            if (fragment == 1) {
                 loadFragmentById(R.id.nav_home)
-            else
+                drawerLayout.closeDrawer(GravityCompat.START)
+                navView.menu.getItem(0).isChecked = true
+                navView.menu.findItem(R.id.nav_profile).isChecked = false
+            } else {
                 LogoutDialog().show(supportFragmentManager, "")
+            }
         // super.onBackPressed()
 
     }

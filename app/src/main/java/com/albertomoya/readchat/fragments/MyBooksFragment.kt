@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.albertomoya.readchat.R
+import com.albertomoya.readchat.adapters.BookPostAdapterCurrentUser
 import com.albertomoya.readchat.adapters.BookPostAdapterHome
 import com.albertomoya.readchat.others.GridSpacingItemDecoration
 import com.albertomoya.readchat.persistance.Book
@@ -24,7 +25,7 @@ class MyBooksFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private val bookProvider = AddBookProvider()
     private val mAuth = AuthProvider()
-    private lateinit var bookPostAdapterHome: BookPostAdapterHome
+    private lateinit var bookPostAdapterMyBooksFragment: BookPostAdapterCurrentUser
     private lateinit var rootView: View
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
@@ -46,17 +47,17 @@ class MyBooksFragment : Fragment() {
             books,
             Book::class.java
         ).build()
-        bookPostAdapterHome =
-            BookPostAdapterHome(
+        bookPostAdapterMyBooksFragment =
+            BookPostAdapterCurrentUser(
                 option,
                 rootView.context
             )
-        recyclerView.adapter = bookPostAdapterHome
-        bookPostAdapterHome.startListening()
+        recyclerView.adapter = bookPostAdapterMyBooksFragment
+        bookPostAdapterMyBooksFragment.startListening()
     }
 
     override fun onStop() {
         super.onStop()
-        bookPostAdapterHome.stopListening()
+        bookPostAdapterMyBooksFragment.stopListening()
     }
 }

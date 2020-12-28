@@ -17,6 +17,7 @@ class NamesCollection {
         // BOOK
         const val COLLECTION_BOOK = "Books"
         const val COLLECTION_BOOK_TITLE = "titleBook"
+        const val COLLECTION_BOOK_CATEGORY = "categoryBook"
         const val COLLECTION_BOOK_DESCRIPTION_BOOK = "descriptionBook"
         const val COLLECTION_BOOK_UID = "UID"
         const val COLLECTION_BOOK_EMAIL_AUTHOR = "emailAuthor"

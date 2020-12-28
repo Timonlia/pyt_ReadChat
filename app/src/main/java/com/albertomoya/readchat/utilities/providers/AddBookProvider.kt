@@ -27,4 +27,8 @@ class AddBookProvider {
     fun getAllBooksByCurrentUser(id: String): Query{
         return mDb.whereEqualTo(NamesCollection.COLLECTION_BOOK_UID_AUTHOR, id).orderBy(NamesCollection.COLLECTION_BOOK_DATE_CREATE_ON)
     }
+
+    fun getPostById(idBook: String): Task<DocumentSnapshot>{
+        return mDb.document(idBook).get()
+    }
 }
