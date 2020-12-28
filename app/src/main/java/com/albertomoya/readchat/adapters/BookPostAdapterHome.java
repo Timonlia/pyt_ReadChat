@@ -16,10 +16,10 @@ import com.bumptech.glide.Glide;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
-public class BookPostAdapter extends FirestoreRecyclerAdapter<Book,BookPostAdapter.ViewHolder> {
+public class BookPostAdapterHome extends FirestoreRecyclerAdapter<Book, BookPostAdapterHome.ViewHolder> {
     private Context context;
 
-    public BookPostAdapter(FirestoreRecyclerOptions<Book> options, Context context) {
+    public BookPostAdapterHome(FirestoreRecyclerOptions<Book> options, Context context) {
         super(options);
         this.context = context;
     }
@@ -37,7 +37,7 @@ public class BookPostAdapter extends FirestoreRecyclerAdapter<Book,BookPostAdapt
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_post_book, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_post_book_home, parent, false);
 
         return new ViewHolder(view);
     }
@@ -48,9 +48,9 @@ public class BookPostAdapter extends FirestoreRecyclerAdapter<Book,BookPostAdapt
 
         public ViewHolder(View view){
             super(view);
-            textViewBookTitle = view.findViewById(R.id.textViewTitleBookPost);
-            textViewBookCategory = view.findViewById(R.id.textViewCategoryBookPost);
-            imageViewBookPhoto = view.findViewById(R.id.imageViewPhotoBookPost);
+            textViewBookTitle = view.findViewById(R.id.textViewTitleBookPostHome);
+            textViewBookCategory = view.findViewById(R.id.textViewCategoryBookPostHome);
+            imageViewBookPhoto = view.findViewById(R.id.imageViewPhotoBookPostHome);
 
         }
     }

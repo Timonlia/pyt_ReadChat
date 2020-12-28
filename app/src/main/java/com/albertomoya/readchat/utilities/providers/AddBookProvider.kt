@@ -21,6 +21,10 @@ class AddBookProvider {
     }
 
     fun getAll(): Query{
-        return mDb.orderBy(NamesCollection.COLLECTION_BOOK_TITLE,Query.Direction.DESCENDING)
+        return mDb.orderBy(NamesCollection.COLLECTION_BOOK_TITLE,Query.Direction.ASCENDING)
+    }
+
+    fun getAllBooksByCurrentUser(id: String): Query{
+        return mDb.whereEqualTo(NamesCollection.COLLECTION_BOOK_UID_AUTHOR, id).orderBy(NamesCollection.COLLECTION_BOOK_DATE_CREATE_ON)
     }
 }
