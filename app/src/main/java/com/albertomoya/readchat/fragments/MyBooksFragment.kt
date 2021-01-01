@@ -10,14 +10,12 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.albertomoya.readchat.R
 import com.albertomoya.readchat.adapters.BookPostAdapterCurrentUser
-import com.albertomoya.readchat.adapters.BookPostAdapterHome
 import com.albertomoya.readchat.others.GridSpacingItemDecoration
 import com.albertomoya.readchat.persistance.Book
 import com.albertomoya.readchat.utilities.providers.AddBookProvider
 import com.albertomoya.readchat.utilities.providers.AuthProvider
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.Query
-import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.fragment_my_books.view.*
 
 
@@ -42,7 +40,7 @@ class MyBooksFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        val books: Query = bookProvider.getAllBooksByCurrentUser(mAuth.getUid().toString())
+        val books: Query = bookProvider.getAllBooksByUser(mAuth.getUid().toString())
         val option: FirestoreRecyclerOptions<Book> = FirestoreRecyclerOptions.Builder<Book>().setQuery(
             books,
             Book::class.java

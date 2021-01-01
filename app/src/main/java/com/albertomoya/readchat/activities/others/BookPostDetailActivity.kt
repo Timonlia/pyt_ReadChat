@@ -1,5 +1,6 @@
 package com.albertomoya.readchat.activities.others
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -7,6 +8,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import com.albertomoya.mylibrary.activities.ToolbarActivity
 import com.albertomoya.readchat.R
+import com.albertomoya.readchat.others.goToActivity
 import com.albertomoya.readchat.utilities.NamesCollection
 import com.albertomoya.readchat.utilities.providers.AddBookProvider
 import com.albertomoya.readchat.utilities.providers.UsersProvider
@@ -26,6 +28,26 @@ class BookPostDetailActivity : ToolbarActivity() {
         toolbarToLoad(toolbar as Toolbar)
         _toolbar?.setNavigationIcon(R.drawable.ic_back)
         getPostBook(idBookPost)
+        onClicksButton()
+    }
+
+    private fun onClicksButton(){
+        buttonShowProfileDetail.setOnClickListener {
+            bookProvider.getPostById(idBookPost).addOnSuccessListener {
+                if (it.exists()){
+                    if (it.contains(NamesCollection.COLLECTION_BOOK_UID_AUTHOR)){
+                        val intent = Intent(this, ProfileUserBookPostDetailActivity::class.java)
+                        intent.putExtra("id",it.getString(NamesCollection.COLLECTION_BOOK_UID_AUTHOR).toString())
+                        startActivity(intent)
+                        overridePendingTransition(
+                            android.R.anim.slide_in_left,
+                            android.R.anim.slide_out_right
+                        )
+                    }
+                }
+            }
+
+        }
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -76,4 +98,6 @@ class BookPostDetailActivity : ToolbarActivity() {
             }
         }
     }
+
+
 }

@@ -1,6 +1,7 @@
 package com.albertomoya.readchat.utilities.providers
 
 import com.albertomoya.readchat.persistance.Book
+import com.albertomoya.readchat.persistance.User
 import com.albertomoya.readchat.utilities.NamesCollection
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.*
@@ -24,11 +25,17 @@ class AddBookProvider {
         return mDb.orderBy(NamesCollection.COLLECTION_BOOK_TITLE,Query.Direction.ASCENDING)
     }
 
-    fun getAllBooksByCurrentUser(id: String): Query{
+    fun getAllBooksByUser(id: String): Query{
         return mDb.whereEqualTo(NamesCollection.COLLECTION_BOOK_UID_AUTHOR, id).orderBy(NamesCollection.COLLECTION_BOOK_DATE_CREATE_ON)
     }
 
     fun getPostById(idBook: String): Task<DocumentSnapshot>{
         return mDb.document(idBook).get()
+    }
+
+    fun updateBook(book: Book): Task<Void> {
+        val updateProfileMap = HashMap<String, Any>()
+        updateProfileMap[NamesCollection.COLLECTION_BOOK_HISTORY_TEXT] = book.historyText
+        return mDb.document(book.UID).update(updateProfileMap)
     }
 }

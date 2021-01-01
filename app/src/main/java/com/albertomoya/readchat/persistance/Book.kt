@@ -18,6 +18,7 @@ class Book constructor() {
     var dateCreateBook = sdf.format(Date())
     var UID: String = ""
     var UIDChat: String = ""
+    var historyText: String = ""
     init {
         this.UID
         this.titleBook
@@ -30,5 +31,6 @@ class Book constructor() {
         this.photoBook
         this.dateCreateBook
         this.UIDChat
+        this.historyText
     }
 }

@@ -20,31 +20,21 @@ import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.DocumentSnapshot;
 
-public class BookPostAdapterCurrentUser extends FirestoreRecyclerAdapter<Book, BookPostAdapterCurrentUser.ViewHolder> {
+public class BookPostAdapterProfileDetail extends FirestoreRecyclerAdapter<Book, BookPostAdapterProfileDetail.ViewHolder> {
     private Context context;
 
-    public BookPostAdapterCurrentUser(FirestoreRecyclerOptions<Book> options, Context context) {
+    public BookPostAdapterProfileDetail(FirestoreRecyclerOptions<Book> options, Context context) {
         super(options);
         this.context = context;
     }
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Book book) {
-        DocumentSnapshot documento = getSnapshots().getSnapshot(position);
-        String postBookId = documento.getId();
 
         holder.textViewBookTitle.setText(book.getTitleBook());
         holder.textViewBookCategory.setText(book.getCategoryBook());
         if (book.getPhotoBook()!=null)
             if (!book.getPhotoBook().isEmpty())
                 Glide.with(context).load(book.getPhotoBook()).override(350,350).into(holder.imageViewBookPhoto);
-        holder.mView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, BookDetailCurrentUserActivity.class);
-                intent.putExtra("id",postBookId);
-                context.startActivity(intent);
-            }
-        });
     }
 
     @NonNull
@@ -52,7 +42,7 @@ public class BookPostAdapterCurrentUser extends FirestoreRecyclerAdapter<Book, B
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_post_book_current_user, parent, false);
 
-        return new BookPostAdapterCurrentUser.ViewHolder(view);
+        return new BookPostAdapterProfileDetail.ViewHolder(view);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -68,3 +58,4 @@ public class BookPostAdapterCurrentUser extends FirestoreRecyclerAdapter<Book, B
         }
     }
 }
+

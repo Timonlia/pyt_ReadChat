@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.others.BookPostDetailActivity"></activity>
+        <activity android:name=".activities.others.BookDetailCurrentUserActivity"></activity>
+        <activity android:name=".activities.others.ProfileUserBookPostDetailActivity" />
+        <activity android:name=".activities.others.BookPostDetailActivity" />
         <activity android:name=".activities.others.EditProfileActivity" />
         <activity android:name=".activities.launcher.EmptyActivity">
             <intent-filter>

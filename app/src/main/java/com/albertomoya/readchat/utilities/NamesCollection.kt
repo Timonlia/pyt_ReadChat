@@ -27,6 +27,7 @@ class NamesCollection {
         const val COLLECTION_BOOK_PHOTO = "photoBook"
         const val COLLECTION_BOOK_DATE_CREATE_ON = "dateCreateBook"
         const val COLLECTION_BOOK_UID_CHAT = "UIDChat"
+        const val COLLECTION_BOOK_HISTORY_TEXT = "historyText"
 
     }
 }

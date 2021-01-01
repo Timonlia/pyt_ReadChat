@@ -80,6 +80,9 @@ class SignUpActivity : AppCompatActivity() {
         newUser.nick = user
         newUser.email = email
         newUser.UID = uid
+        newUser.photoUrl = "https://definicion.de/wp-content/uploads/2019/06/perfildeusuario.jpg"
+        newUser.photoBackground = "https://i.blogs.es/d8a22c/poeta_lunera_46878434_357901494940657_8644354556054754798_n/450_1000.jpg"
+        newUser.descriptionUser = "Sin Descripción"
         usrProvider.createUser(newUser).addOnSuccessListener { Log.i("Guardado","Se ha creado usuario en base de datos") }
     }
 }
