@@ -12,7 +12,7 @@ import com.albertomoya.readchat.R
 import com.albertomoya.readchat.adapters.BookPostAdapterCurrentUser
 import com.albertomoya.readchat.others.GridSpacingItemDecoration
 import com.albertomoya.readchat.persistance.Book
-import com.albertomoya.readchat.utilities.providers.AddBookProvider
+import com.albertomoya.readchat.utilities.providers.BookProvider
 import com.albertomoya.readchat.utilities.providers.AuthProvider
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.Query
@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.fragment_my_books.view.*
 
 class MyBooksFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
-    private val bookProvider = AddBookProvider()
+    private val bookProvider = BookProvider()
     private val mAuth = AuthProvider()
     private lateinit var bookPostAdapterMyBooksFragment: BookPostAdapterCurrentUser
     private lateinit var rootView: View

@@ -51,6 +51,8 @@
     // Dialogs
     <string name="logout_want_it">¿Quieres cerrar sesión?</string>
     <string name="revise_you_email">Revisa tu correo:</string>
+    <string name="title_new_chapter">¿Como quieres titular el capítulo?</string>
+    <string name="add_title_chapter">Título del capítulo</string>
     // Header
     <string name="complete_you_profile">Completa tu perfil</string>
     // Fragment Profile

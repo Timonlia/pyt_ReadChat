@@ -12,7 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.others.BookDetailCurrentUserActivity"></activity>
+        <activity android:name=".activities.others.ReadChapterBookActivity"></activity>
+        <activity android:name=".activities.others.SelectChapterToReadBookActivity" />
+        <activity android:name=".activities.others.BookWriteChapterActivity" />
+        <activity android:name=".activities.others.BookDetailAndEditActivity" />
+        <activity android:name=".activities.others.BookDetailCurrentUserActivity" />
         <activity android:name=".activities.others.ProfileUserBookPostDetailActivity" />
         <activity android:name=".activities.others.BookPostDetailActivity" />
         <activity android:name=".activities.others.EditProfileActivity" />

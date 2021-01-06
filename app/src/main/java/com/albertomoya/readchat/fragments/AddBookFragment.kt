@@ -1,7 +1,6 @@
 package com.albertomoya.readchat.fragments
 
 import android.content.Intent
-import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,19 +9,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import com.albertomoya.readchat.R
+import com.albertomoya.readchat.activities.others.BookDetailAndEditActivity
+import com.albertomoya.readchat.activities.others.ProfileUserBookPostDetailActivity
+import com.albertomoya.readchat.others.goToActivity
 import com.albertomoya.readchat.others.snackBar
 import com.albertomoya.readchat.persistance.Book
+import com.albertomoya.readchat.persistance.Chapter
 import com.albertomoya.readchat.persistance.User
 import com.albertomoya.readchat.utilities.FileUtil
 import com.albertomoya.readchat.utilities.NamesCollection
-import com.albertomoya.readchat.utilities.providers.AddBookProvider
+import com.albertomoya.readchat.utilities.providers.BookProvider
 import com.albertomoya.readchat.utilities.providers.AuthProvider
 import com.albertomoya.readchat.utilities.providers.ImageProvider
 import com.albertomoya.readchat.utilities.providers.UsersProvider
 import com.bumptech.glide.Glide
 import com.google.android.gms.tasks.OnCompleteListener
 import kotlinx.android.synthetic.main.fragment_add_book.view.*
-import kotlinx.android.synthetic.main.fragment_profile.view.*
 import java.io.File
 import java.lang.Exception
 
@@ -33,7 +35,7 @@ class AddBookFragment : Fragment() {
     private val arrayCategories = ArrayList<String>()
     private val auth = AuthProvider()
     private val mStorage = ImageProvider()
-    private val addBook = AddBookProvider()
+    private val addBook = BookProvider()
     private val userDB = UsersProvider()
     private val REQUEST_CODE_GALLERY = 1
     private lateinit var fImage: File
@@ -89,8 +91,16 @@ class AddBookFragment : Fragment() {
         newBook.photoBook = uriImageBook
         newBook.UIDChat = "Chat_"+newBook.titleBook+"_"+newBook.emailAuthor
         try {
-            addBook.createBook(newBook).addOnCompleteListener{}
-            activity!!.snackBar("Libro creado correctamente")
+            addBook.createBook(newBook).addOnCompleteListener {
+                if (it.isSuccessful){
+
+                    activity!!.snackBar("Libro creado correctamente")
+                    val intent = Intent(rootView.context, BookDetailAndEditActivity::class.java)
+                    intent.putExtra("id",newBook.UID)
+                    startActivity(intent)
+                }
+            }
+
         }catch (e:Exception){
             activity!!.snackBar("Error al crear libro, intentelo mas tarde")
         }

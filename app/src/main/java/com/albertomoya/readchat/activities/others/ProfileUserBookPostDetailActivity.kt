@@ -12,22 +12,19 @@ import com.albertomoya.readchat.adapters.BookPostAdapterProfileDetail
 import com.albertomoya.readchat.others.GridSpacingItemDecoration
 import com.albertomoya.readchat.persistance.Book
 import com.albertomoya.readchat.utilities.NamesCollection
-import com.albertomoya.readchat.utilities.providers.AddBookProvider
+import com.albertomoya.readchat.utilities.providers.BookProvider
 import com.albertomoya.readchat.utilities.providers.UsersProvider
 import com.bumptech.glide.Glide
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.Query
-import kotlinx.android.synthetic.main.activity_book_post_detail.*
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.toolbar
 import kotlinx.android.synthetic.main.activity_profile_user_book_post_detail.*
-import kotlinx.android.synthetic.main.fragment_home.view.*
 
 class ProfileUserBookPostDetailActivity : ToolbarActivity() {
 
     private lateinit var idUserBookPost: String
     private val mAuth = UsersProvider()
-    private val bookProvider = AddBookProvider()
+    private val bookProvider = BookProvider()
     private lateinit var recyclerView: RecyclerView
     private lateinit var bookPostAdapterProfileDetail: BookPostAdapterProfileDetail
 
@@ -38,7 +35,6 @@ class ProfileUserBookPostDetailActivity : ToolbarActivity() {
         toolbarToLoad(toolbar as Toolbar)
         _toolbar?.setNavigationIcon(R.drawable.ic_back)
         getInfoCurrentUserAndSetUpDataUser(idUserBookPost)
-
         val newLinerLayoutManager = GridLayoutManager(this,3)
         recyclerView = recyclerViewBookProfileDetail as RecyclerView
         recyclerView.layoutManager = newLinerLayoutManager

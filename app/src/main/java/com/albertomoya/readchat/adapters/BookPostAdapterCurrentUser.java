@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.albertomoya.readchat.R;
+import com.albertomoya.readchat.activities.others.BookDetailAndEditActivity;
 import com.albertomoya.readchat.activities.others.BookDetailCurrentUserActivity;
 import com.albertomoya.readchat.activities.others.BookPostDetailActivity;
 import com.albertomoya.readchat.persistance.Book;
@@ -40,7 +41,7 @@ public class BookPostAdapterCurrentUser extends FirestoreRecyclerAdapter<Book, B
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, BookDetailCurrentUserActivity.class);
+                Intent intent = new Intent(context, BookDetailAndEditActivity.class);
                 intent.putExtra("id",postBookId);
                 context.startActivity(intent);
             }

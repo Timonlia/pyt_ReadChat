@@ -1,7 +1,5 @@
 package com.albertomoya.readchat.activities.others
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
@@ -10,18 +8,15 @@ import com.albertomoya.readchat.R
 import com.albertomoya.readchat.others.snackBar
 import com.albertomoya.readchat.persistance.Book
 import com.albertomoya.readchat.utilities.NamesCollection
-import com.albertomoya.readchat.utilities.providers.AddBookProvider
+import com.albertomoya.readchat.utilities.providers.BookProvider
 import com.albertomoya.readchat.utilities.providers.UsersProvider
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_book_detail_current_user.*
-import kotlinx.android.synthetic.main.activity_book_post_detail.*
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.toolbar
-import kotlinx.android.synthetic.main.activity_profile_user_book_post_detail.*
 
 class BookDetailCurrentUserActivity : ToolbarActivity() {
     private lateinit var idBookPost: String
-    private val bookProvider = AddBookProvider()
+    private val bookProvider = BookProvider()
     private val mAuth = UsersProvider()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
