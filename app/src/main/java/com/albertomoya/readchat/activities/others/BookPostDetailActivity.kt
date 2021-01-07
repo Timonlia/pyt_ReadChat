@@ -8,10 +8,12 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import com.albertomoya.mylibrary.activities.ToolbarActivity
 import com.albertomoya.readchat.R
+import com.albertomoya.readchat.persistance.ChatUser
 import com.albertomoya.readchat.persistance.FavouriteBook
 import com.albertomoya.readchat.utilities.NamesCollection
 import com.albertomoya.readchat.utilities.providers.AuthProvider
 import com.albertomoya.readchat.utilities.providers.BookProvider
+import com.albertomoya.readchat.utilities.providers.ChatProvider
 import com.albertomoya.readchat.utilities.providers.UsersProvider
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_book_post_detail.*
@@ -22,6 +24,7 @@ class BookPostDetailActivity : ToolbarActivity() {
     private val bookProvider = BookProvider()
     private val userProvider = UsersProvider()
     private val mAuth = AuthProvider()
+    private val chatProvider = ChatProvider()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_book_post_detail)
@@ -91,17 +94,28 @@ class BookPostDetailActivity : ToolbarActivity() {
                         favBook.uidFavChatBook = it.getString(NamesCollection.COLLECTION_BOOK_UID_CHAT).toString()
                         favBook.uidFavBook = it.getString(NamesCollection.COLLECTION_BOOK_UID).toString()
                         userProvider.addFavouriteBook(mAuth.getUid().toString(),favBook)
+
+                        val chatUser = ChatUser()
+                        if (it.getBoolean(NamesCollection.COLLECTION_BOOK_CHAT) == true) {
+                            chatUser.uidChat =
+                                it.getString(NamesCollection.COLLECTION_BOOK_UID_CHAT).toString()
+                            chatUser.uidUser = mAuth.getUid().toString()
+                            userProvider.addChatBookFavourite(chatUser)
+                            chatProvider.addUserToChat(chatUser.uidChat, chatUser)
+                        }
                     }
                 }
             } else {
                 imageViewFavDetail.setBackgroundDrawable(ContextCompat.getDrawable(applicationContext,R.drawable.ic_ic_empty))
                 userProvider.deleteBookFav(mAuth.getUid().toString(),idBook)
+                bookProvider.getPostById(idBook).addOnSuccessListener {
+                    if (it.exists()){
+                        userProvider.deleteChatUser(mAuth.getUid().toString(),it.getString(NamesCollection.COLLECTION_BOOK_UID_CHAT).toString())
+                        chatProvider.deleteChatUser(mAuth.getUid().toString(),it.getString(NamesCollection.COLLECTION_BOOK_UID_CHAT).toString())
+                    }
+                }
             }
 
-        }
-
-        BookProvider().getAllCapsByBook("9r8XCEwTTKM6h4LR1pqK0biSjuN2_Lo que el viento se llevo").addSnapshotListener() { value, error ->
-            Log.i("Hola", "hh"+value.toString())
         }
     }
 

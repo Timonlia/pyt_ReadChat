@@ -42,5 +42,24 @@ class NamesCollection {
         const val COLLECTION_USER_FAV_BOOK = "FavBook"
         const val COLLECTION_USER_FAV_BOOK_UID = "uidFavBook"
         const val COLLECTION_USER_FAV_BOOK_UID_CHAT = "uidFavChatBook"
+        // CHAT
+        const val COLLECTION_CHAT = "Chats"
+        const val COLLECTION_CHAT_UID = "uidChat"
+        const val COLLECTION_CHAT_TIMESTAMP = "timestamp"
+        const val COLLECTION_CHAT_NAME = "nameChat"
+        const val COLLECTION_CHAT_PHOTO = "photoChat"
+
+        // CHAT USER
+        const val COLLECTION_CHAT_USERS = "UsersChat"
+        const val COLLECTION_CHAT_USERS_UID_USER = "uidUser"
+        const val COLLECTION_CHAT_USERS_UID_CHAT = "uidChat"
+
+        // CHAT MESSAGE
+        const val COLLECTION_CHAT_MESSAGES = "Messages"
+        const val COLLECTION_CHAT_MESSAGES_UID_USER = "uidUser"
+        const val COLLECTION_CHAT_MESSAGES_MESSAGE = "message"
+        const val COLLECTION_CHAT_MESSAGES_PHOTO_USER = "userPhoto"
+        const val COLLECTION_CHAT_MESSAGES_TIMESTAMP = "timestamp"
+        const val COLLECTION_CHAT_MESSAGES_UID_CHAT = "uidChat"
     }
 }

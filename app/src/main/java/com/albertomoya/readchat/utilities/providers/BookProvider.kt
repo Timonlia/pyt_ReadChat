@@ -34,6 +34,14 @@ class BookProvider {
         return mDb.document(idBook).get()
     }
 
+    fun getPostByCategory(category: String): Query{
+        return mDb.orderBy(NamesCollection.COLLECTION_BOOK_CATEGORY).startAt(category).endAt(category+'\uf8ff')
+    }
+
+    fun getPostByTitle(title: String): Query{
+        return mDb.orderBy(NamesCollection.COLLECTION_BOOK_TITLE).startAt(title).endAt(title+'\uf8ff')
+    }
+
     fun updateBook(book: Book): Task<Void> {
         val updateProfileMap = HashMap<String, Any>()
         updateProfileMap[NamesCollection.COLLECTION_BOOK_QUANTITY_CAPS] = book.quantityCaps

@@ -5,7 +5,9 @@ import android.content.Intent
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Patterns
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.view.animation.Animation
 import android.widget.EditText
 import android.widget.ImageView
@@ -62,3 +64,4 @@ fun Activity.isValidPassword(password: String): Boolean{
 fun Activity.isValidConfirmPassword(password: String, confirmPassword: String): Boolean {
     return password == confirmPassword
 }
+fun ViewGroup.inflate(layoutId: Int) = LayoutInflater.from(context).inflate(layoutId,this, false)!!

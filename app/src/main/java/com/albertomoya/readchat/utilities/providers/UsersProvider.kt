@@ -1,5 +1,6 @@
 package com.albertomoya.readchat.utilities.providers
 
+import com.albertomoya.readchat.persistance.ChatUser
 import com.albertomoya.readchat.persistance.FavouriteBook
 import com.albertomoya.readchat.persistance.User
 import com.albertomoya.readchat.utilities.NamesCollection
@@ -57,8 +58,21 @@ class UsersProvider {
     fun deleteBookFav(userId: String, idBook: String): Task<Void> {
         return mDb.document(userId).collection(NamesCollection.COLLECTION_USER_FAV_BOOK).document(idBook).delete()
     }
+
     fun getAllFavourites(userId: String): Query{
         return mDb.document(userId).collection(NamesCollection.COLLECTION_USER_FAV_BOOK)
+    }
+
+    fun addChatBookFavourite(chat: ChatUser): Task<Void>{
+        return mDb.document(chat.uidUser).collection(NamesCollection.COLLECTION_CHAT).document(chat.uidChat).set(chat)
+    }
+
+    fun getAllChats(userId: String): Query{
+        return mDb.document(userId).collection(NamesCollection.COLLECTION_CHAT)
+    }
+
+    fun deleteChatUser(userId: String, idChat: String): Task<Void> {
+        return mDb.document(userId).collection(NamesCollection.COLLECTION_CHAT).document(idChat).delete()
     }
 
 }

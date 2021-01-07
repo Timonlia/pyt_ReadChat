@@ -15,13 +15,11 @@ import com.albertomoya.readchat.others.goToActivity
 import com.albertomoya.readchat.others.snackBar
 import com.albertomoya.readchat.persistance.Book
 import com.albertomoya.readchat.persistance.Chapter
+import com.albertomoya.readchat.persistance.Chat
 import com.albertomoya.readchat.persistance.User
 import com.albertomoya.readchat.utilities.FileUtil
 import com.albertomoya.readchat.utilities.NamesCollection
-import com.albertomoya.readchat.utilities.providers.BookProvider
-import com.albertomoya.readchat.utilities.providers.AuthProvider
-import com.albertomoya.readchat.utilities.providers.ImageProvider
-import com.albertomoya.readchat.utilities.providers.UsersProvider
+import com.albertomoya.readchat.utilities.providers.*
 import com.bumptech.glide.Glide
 import com.google.android.gms.tasks.OnCompleteListener
 import kotlinx.android.synthetic.main.fragment_add_book.view.*
@@ -41,6 +39,7 @@ class AddBookFragment : Fragment() {
     private lateinit var fImage: File
     private var uriImageBook: String = ""
     private lateinit var rootView: View
+    private val chatProvider = ChatProvider()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         rootView = inflater.inflate(R.layout.fragment_add_book, container, false)
@@ -90,6 +89,15 @@ class AddBookFragment : Fragment() {
         newBook.chatBook = isChat
         newBook.photoBook = uriImageBook
         newBook.UIDChat = "Chat_"+newBook.titleBook+"_"+newBook.emailAuthor
+
+        if (isChat){
+            val chat = Chat()
+            chat.uidChat = newBook.UIDChat
+            chat.photoChat = newBook.photoBook
+            chat.nameChat = newBook.titleBook
+            chatProvider.createChat(chat)
+        }
+
         try {
             addBook.createBook(newBook).addOnCompleteListener {
                 if (it.isSuccessful){
