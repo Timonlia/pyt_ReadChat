@@ -32,12 +32,20 @@ public class BookPostAdapterHome extends FirestoreRecyclerAdapter<Book, BookPost
 
         DocumentSnapshot documento = getSnapshots().getSnapshot(position);
         String postBookId = documento.getId();
+        String tituloReducido = "";
+        if (book.getTitleBook().length() > 21) {
+            tituloReducido = book.getTitleBook().substring(0, 18) + "...";
+            holder.textViewBookTitle.setText(tituloReducido);
+        } else {
+            holder.textViewBookTitle.setText(book.getTitleBook());
+        }
 
-        holder.textViewBookTitle.setText(book.getTitleBook());
         holder.textViewBookCategory.setText(book.getCategoryBook());
         if (book.getPhotoBook()!=null)
             if (!book.getPhotoBook().isEmpty())
                 Glide.with(context).load(book.getPhotoBook()).override(350,350).into(holder.imageViewBookPhoto);
+            else
+                Glide.with(context).load(R.drawable.new_photo_post).override(350,350).into(holder.imageViewBookPhoto);
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

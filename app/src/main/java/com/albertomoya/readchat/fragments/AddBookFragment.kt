@@ -22,6 +22,7 @@ import com.albertomoya.readchat.utilities.NamesCollection
 import com.albertomoya.readchat.utilities.providers.*
 import com.bumptech.glide.Glide
 import com.google.android.gms.tasks.OnCompleteListener
+import kotlinx.android.synthetic.main.fragment_add_book.*
 import kotlinx.android.synthetic.main.fragment_add_book.view.*
 import java.io.File
 import java.lang.Exception
@@ -105,6 +106,10 @@ class AddBookFragment : Fragment() {
                     activity!!.snackBar("Libro creado correctamente")
                     val intent = Intent(rootView.context, BookDetailAndEditActivity::class.java)
                     intent.putExtra("id",newBook.UID)
+                    rootView.editTextTitleCreateBook.setText("")
+                    rootView.editTextDescriptionCreateBook.setText("")
+                    rootView.checkBoxChat.isChecked = false
+                    imageCreateBook.setImageDrawable(rootView.context.getDrawable(R.drawable.background_header))
                     startActivity(intent)
                 }
             }

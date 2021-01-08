@@ -32,6 +32,7 @@
                 android:layout_below="@id/imageViewPhotoBookPostCurrentUser"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
+                android:maxLines="1"
                 android:paddingTop="10dp"
                 android:textSize="15sp" />
 
@@ -43,6 +44,7 @@
                 android:paddingBottom="5dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
+                android:maxLines="1"
                 android:textSize="12dp" />
 
         </RelativeLayout>
