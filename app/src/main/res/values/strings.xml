@@ -64,5 +64,25 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add_book">Crear libro</string>
     <string name="check_box_chat">¿Deseas agregar chat?</string>
-
+    // Titles
+    <string name="title_chat">Chats</string>
+    <string name="title_add_post_book">Añadir publicación</string>
+    <string name="title_fav_posts">Libros favoritos</string>
+    <string name="title_my_posts">Mis publicaciones</string>
+    <string name="title_my_profile">Mi perfil</string>
+    <string name="title_detail_post">Detalles de la publicación</string>
+    // Navigation Drawer
+    <string name="item_home">Inicio</string>
+    <string name="item_my_books">Mis libros</string>
+    <string name="item_add_book">Añadir publicación</string>
+    <string name="item_fav_books">Libros favoritos</string>
+    <string name="item_chat">Chats</string>
+    <string name="item_profile">Perfil</string>
+    <string name="item_logout">Cerrar sesión</string>
+    <string name="item_space_other">Otros</string>
+    // Post
+    <string name="post_not_have_post">No hay publicaciones...</string>
+    <string name="post_have_posts">Publicaciones</string>
+    // User
+    <string name="user_not_have_description">Este usuario no tiene descripción...</string>
 </resources>

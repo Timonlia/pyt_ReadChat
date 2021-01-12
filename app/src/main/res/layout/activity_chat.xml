@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".fragments.ChatFragment">
 
     <include
@@ -43,9 +44,10 @@
             android:background="@drawable/edit_text_chat"
             android:ems="10"
             android:hint="Nuevo mensaje..."
-            android:textColorHint="@color/colorPrimaryText"
+            android:textColorHint="@color/colorWhite"
             android:inputType="textMultiLine"
             android:padding="8dp"
+            android:textColorLink="@color/colorWhite"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/buttonSendMessage"
@@ -61,7 +63,7 @@
             android:layout_marginBottom="4dp"
             android:background="@drawable/bottom_chat_send"
             app:srcCompat="@drawable/ic_send"
-            android:tint="@color/colorPrimaryText"
+            android:tint="@color/colorWhite"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

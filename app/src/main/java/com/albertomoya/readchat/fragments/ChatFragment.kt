@@ -31,6 +31,7 @@ class ChatFragment : Fragment() {
         rootView = inflater.inflate(R.layout.fragment_chat, container, false)
         recyclerView = rootView.recyclerViewChats as RecyclerView
         recyclerView.layoutManager = layoutManager
+        activity!!.title = activity!!.applicationContext.getString(R.string.title_chat)
         return rootView
     }
 

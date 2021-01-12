@@ -29,12 +29,27 @@ public class BookPostAdapterProfileDetail extends FirestoreRecyclerAdapter<Book,
     }
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Book book) {
-
-        holder.textViewBookTitle.setText(book.getTitleBook());
+        String tituloReducido = "";
+        if (book.getTitleBook().length() > 15) {
+            tituloReducido = book.getTitleBook().substring(0, 15) + "...";
+            holder.textViewBookTitle.setText(tituloReducido);
+        } else {
+            holder.textViewBookTitle.setText(book.getTitleBook());
+        }
         holder.textViewBookCategory.setText(book.getCategoryBook());
         if (book.getPhotoBook()!=null)
             if (!book.getPhotoBook().isEmpty())
                 Glide.with(context).load(book.getPhotoBook()).override(350,350).into(holder.imageViewBookPhoto);
+            else
+                Glide.with(context).load(R.drawable.new_photo_post).override(350,350).into(holder.imageViewBookPhoto);
+        holder.mView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, BookPostDetailActivity.class);
+                intent.putExtra("id",book.getUID());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @NonNull

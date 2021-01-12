@@ -33,6 +33,7 @@ class FavouriteBooksFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
          rootView = inflater.inflate(R.layout.fragment_favourite_books, container, false)
         val newLinerLayoutManager = GridLayoutManager(rootView.context,3)
+        activity!!.title = activity!!.applicationContext.getString(R.string.title_fav_posts)
         recyclerView = rootView.recyclerViewBookFav as RecyclerView
         recyclerView.layoutManager = newLinerLayoutManager
         recyclerView.addItemDecoration(GridSpacingItemDecoration(3,10, true))

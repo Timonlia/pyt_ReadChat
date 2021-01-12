@@ -1,6 +1,8 @@
 package com.albertomoya.readchat.fragments
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,8 +14,8 @@ import com.albertomoya.readchat.R
 import com.albertomoya.readchat.adapters.BookPostAdapterHome
 import com.albertomoya.readchat.others.GridSpacingItemDecoration
 import com.albertomoya.readchat.persistance.Book
-import com.albertomoya.readchat.utilities.providers.BookProvider
 import com.albertomoya.readchat.utilities.providers.AuthProvider
+import com.albertomoya.readchat.utilities.providers.BookProvider
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.Query
 import com.mancj.materialsearchbar.MaterialSearchBar
@@ -26,8 +28,8 @@ class HomeFragment : Fragment(), MaterialSearchBar.OnSearchActionListener {
     private lateinit var recyclerView: RecyclerView
     private val bookProvider = BookProvider()
     private val mAuth = AuthProvider()
-    private var adapterTitle = false
-    private var adapterCategory = false
+    private var adapterTitle : Boolean = false
+    private var adapterCategory : Boolean = false
     private lateinit var bookPostAdapterHome: BookPostAdapterHome
     private lateinit var bookPostAdapterHomeTitle: BookPostAdapterHome
     private lateinit var bookPostAdapterHomeCategory: BookPostAdapterHome
@@ -36,11 +38,11 @@ class HomeFragment : Fragment(), MaterialSearchBar.OnSearchActionListener {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         rootView = inflater.inflate(R.layout.fragment_home, container, false)
-
-        val newLinerLayoutManager = GridLayoutManager(rootView.context,3)
+        activity!!.title = activity!!.applicationContext.getString(R.string.app_name)
+        val newLinerLayoutManager = GridLayoutManager(rootView.context, 3)
         recyclerView = rootView.recyclerViewBookHome as RecyclerView
         recyclerView.layoutManager = newLinerLayoutManager
-        recyclerView.addItemDecoration(GridSpacingItemDecoration(3,10, true))
+        recyclerView.addItemDecoration(GridSpacingItemDecoration(3, 10, true))
         recyclerView.itemAnimator = DefaultItemAnimator()
         rootView.searchBar.setOnSearchActionListener(this)
 
@@ -63,11 +65,34 @@ class HomeFragment : Fragment(), MaterialSearchBar.OnSearchActionListener {
         recyclerView.adapter = bookPostAdapterHome
         bookPostAdapterHome.startListening()
     }
+
+    private fun nullPost(){
+        val books: Query = bookProvider.getPostByTitle("null")
+        books.get().addOnCompleteListener {
+            val option: FirestoreRecyclerOptions<Book> = FirestoreRecyclerOptions.Builder<Book>().setQuery(
+                books,
+                Book::class.java
+            ).build()
+            bookPostAdapterHomeTitle =
+                BookPostAdapterHome(
+                    option,
+                    rootView.context
+                )
+            bookPostAdapterHomeTitle.notifyDataSetChanged()
+            recyclerView.adapter = bookPostAdapterHomeTitle
+            bookPostAdapterHomeTitle.startListening()
+
+            nullPosts.visibility = View.VISIBLE
+
+
+        }
+    }
     private fun searchByTitle(title: String){
         val books: Query = bookProvider.getPostByTitle(title)
         books.get().addOnCompleteListener {
             if (it.isSuccessful){
                 if (!it.result!!.isEmpty){
+                    nullPosts.visibility = View.INVISIBLE
                     val option: FirestoreRecyclerOptions<Book> = FirestoreRecyclerOptions.Builder<Book>().setQuery(
                         books,
                         Book::class.java
@@ -93,6 +118,7 @@ class HomeFragment : Fragment(), MaterialSearchBar.OnSearchActionListener {
         books.get().addOnCompleteListener {
             if (it.isSuccessful) {
                 if (!it.result!!.isEmpty) {
+                    nullPosts.visibility = View.INVISIBLE
                     val option: FirestoreRecyclerOptions<Book> =
                         FirestoreRecyclerOptions.Builder<Book>().setQuery(
                             books,
@@ -117,6 +143,7 @@ class HomeFragment : Fragment(), MaterialSearchBar.OnSearchActionListener {
 
     override fun onStart() {
         super.onStart()
+        nullPosts.visibility = View.INVISIBLE
         getAllPost()
     }
 
@@ -136,12 +163,21 @@ class HomeFragment : Fragment(), MaterialSearchBar.OnSearchActionListener {
     }
 
     override fun onSearchConfirmed(text: CharSequence?) {
+        nullPosts.visibility = View.INVISIBLE
         searchByTitle(text.toString())
         searchByCategory(text.toString())
+
+        Handler(Looper.getMainLooper()).postDelayed(Runnable {
+            if (!adapterCategory && !adapterTitle)
+                nullPost()
+        },300)
+
+
     }
 
     override fun onSearchStateChanged(enabled: Boolean) {
         if (!enabled){
+            nullPosts.visibility = View.INVISIBLE
             getAllPost()
         }
     }

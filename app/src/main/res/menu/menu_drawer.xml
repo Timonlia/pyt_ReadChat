@@ -6,36 +6,36 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_home_blue"
-            android:title="Home"/>
+            android:title="@string/item_home"/>
         <item
             android:id="@+id/nav_my_books"
             android:icon="@drawable/ic_my_books_blue"
-            android:title="My Books"/>
+            android:title="@string/item_my_books"/>
         <item
             android:id="@+id/nav_create_book"
             android:icon="@drawable/ic_add_book_blue"
-            android:title="Create Book"/>
+            android:title="@string/item_add_book"/>
         <item
             android:id="@+id/nav_fav_books"
             android:icon="@drawable/ic_fav_books"
-            android:title="FavBooks"/>
+            android:title="@string/item_fav_books"/>
         <item
             android:id="@+id/nav_chats"
             android:icon="@drawable/ic_chat_blue"
-            android:title="Chats"/>
+            android:title="@string/item_chat"/>
     </group>
 
-    <item android:title="Others">
+    <item android:title="@string/item_space_other">
         <menu>
             <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/nav_profile"
                     android:icon="@drawable/ic_profile_blue"
-                    android:title="Profile"/>
+                    android:title="@string/item_profile"/>
                 <item
                     android:id="@+id/nav_logout"
                     android:icon="@drawable/ic_logout_blue"
-                    android:title="Logout"/>
+                    android:title="@string/item_logout"/>
             </group>
         </menu>
     </item>

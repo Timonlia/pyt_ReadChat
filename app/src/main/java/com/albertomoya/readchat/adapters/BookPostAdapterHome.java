@@ -33,8 +33,8 @@ public class BookPostAdapterHome extends FirestoreRecyclerAdapter<Book, BookPost
         DocumentSnapshot documento = getSnapshots().getSnapshot(position);
         String postBookId = documento.getId();
         String tituloReducido = "";
-        if (book.getTitleBook().length() > 21) {
-            tituloReducido = book.getTitleBook().substring(0, 18) + "...";
+        if (book.getTitleBook().length() > 15) {
+            tituloReducido = book.getTitleBook().substring(0, 15) + "...";
             holder.textViewBookTitle.setText(tituloReducido);
         } else {
             holder.textViewBookTitle.setText(book.getTitleBook());

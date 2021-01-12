@@ -16,6 +16,9 @@ import com.albertomoya.readchat.utilities.providers.BookProvider
 import com.albertomoya.readchat.utilities.providers.UsersProvider
 import com.bumptech.glide.Glide
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
+import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.EventListener
+import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.activity_main.toolbar
 import kotlinx.android.synthetic.main.activity_profile_user_book_post_detail.*
@@ -23,8 +26,9 @@ import kotlinx.android.synthetic.main.activity_profile_user_book_post_detail.*
 class ProfileUserBookPostDetailActivity : ToolbarActivity() {
 
     private lateinit var idUserBookPost: String
-    private val mAuth = UsersProvider()
+    private val userProvider = UsersProvider()
     private val bookProvider = BookProvider()
+    private var notHavePosts = false
     private lateinit var recyclerView: RecyclerView
     private lateinit var bookPostAdapterProfileDetail: BookPostAdapterProfileDetail
 
@@ -40,6 +44,7 @@ class ProfileUserBookPostDetailActivity : ToolbarActivity() {
         recyclerView.layoutManager = newLinerLayoutManager
         recyclerView.addItemDecoration(GridSpacingItemDecoration(3,10, true))
         recyclerView.itemAnimator = DefaultItemAnimator()
+        listenerChangesCollection()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -53,19 +58,20 @@ class ProfileUserBookPostDetailActivity : ToolbarActivity() {
     }
 
     private fun getInfoCurrentUserAndSetUpDataUser(uid: String){
-        mAuth.getUser(uid).addOnSuccessListener {
+        userProvider.getUser(uid).addOnSuccessListener {
             if (it.exists()){
                 if (it.contains(NamesCollection.COLLECTION_USER_NICK)){
                     textViewNickUserDetail.text = it.getString(NamesCollection.COLLECTION_USER_NICK)
                 }
                 if (it.contains(NamesCollection.COLLECTION_USER_DESCRIPTION)){
-                    textViewDescriptionUserDetail.text = it.getString(NamesCollection.COLLECTION_USER_DESCRIPTION)
+                    if (it.getString(NamesCollection.COLLECTION_USER_DESCRIPTION) == "") textViewDescriptionUserDetail.text = applicationContext.getString(R.string.user_not_have_description)
+                    else textViewDescriptionUserDetail.text = it.getString(NamesCollection.COLLECTION_USER_DESCRIPTION)
                 }
                 if (it.contains(NamesCollection.COLLECTION_USER_QUANTITY_BOOKS_USER_CREATE)){
                     textViewBooksDetail.text = "Libros: ${it[NamesCollection.COLLECTION_USER_QUANTITY_BOOKS_USER_CREATE].toString()}"
                 }
                 if (it.contains(NamesCollection.COLLECTION_USER_QUANTITY_FOLLOWERS)){
-                    textViewFollowersDetail.text = "Seguidores: ${it[NamesCollection.COLLECTION_USER_QUANTITY_FOLLOWERS].toString()}"
+                    textViewFollowersDetail.text = "Votos: ${it[NamesCollection.COLLECTION_USER_QUANTITY_FOLLOWERS].toString()}"
                 }
                 if (it.contains(NamesCollection.COLLECTION_USER_PHOTO_URL)){
                     Glide.with(this).load(it.getString(NamesCollection.COLLECTION_USER_PHOTO_URL)).override(350,350).into(imageProfileFragmentDetail)
@@ -80,21 +86,42 @@ class ProfileUserBookPostDetailActivity : ToolbarActivity() {
     override fun onStart() {
         super.onStart()
         val books: Query = bookProvider.getAllBooksByUser(idUserBookPost)
-        val option: FirestoreRecyclerOptions<Book> = FirestoreRecyclerOptions.Builder<Book>().setQuery(
-            books,
-            Book::class.java
-        ).build()
-        bookPostAdapterProfileDetail =
-            BookPostAdapterProfileDetail(
-                option,
-                this
-            )
-        recyclerView.adapter = bookPostAdapterProfileDetail
-        bookPostAdapterProfileDetail.startListening()
+        books.get().addOnCompleteListener {
+            if (it.isSuccessful) {
+                if (!it.result!!.isEmpty) {
+                    val option: FirestoreRecyclerOptions<Book> = FirestoreRecyclerOptions.Builder<Book>().setQuery(
+                        books,
+                        Book::class.java
+                    ).build()
+                    bookPostAdapterProfileDetail =
+                        BookPostAdapterProfileDetail(
+                            option,
+                            this
+                        )
+                    recyclerView.adapter = bookPostAdapterProfileDetail
+                    bookPostAdapterProfileDetail.startListening()
+                    notHavePosts = true
+                    textViewNotHavePosts.text = applicationContext.getString(R.string.post_have_posts)
+                } else{
+                    notHavePosts = false
+                    textViewNotHavePosts.text = applicationContext.getString(R.string.post_not_have_post)
+                }
+            }
+        }
+
     }
 
     override fun onStop() {
         super.onStop()
-        bookPostAdapterProfileDetail.stopListening()
+        if (notHavePosts) bookPostAdapterProfileDetail.stopListening()
+    }
+
+    private fun listenerChangesCollection(){
+        userProvider.getUserForSnapshot(idUserBookPost).addSnapshotListener(object : java.util.EventListener,
+            EventListener<DocumentSnapshot> {
+            override fun onEvent(snapshot: DocumentSnapshot?, exception: FirebaseFirestoreException?) {
+                getInfoCurrentUserAndSetUpDataUser(idUserBookPost)
+            }
+        })
     }
 }

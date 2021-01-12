@@ -10,13 +10,8 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import com.albertomoya.readchat.R
 import com.albertomoya.readchat.activities.others.BookDetailAndEditActivity
-import com.albertomoya.readchat.activities.others.ProfileUserBookPostDetailActivity
-import com.albertomoya.readchat.others.goToActivity
 import com.albertomoya.readchat.others.snackBar
-import com.albertomoya.readchat.persistance.Book
-import com.albertomoya.readchat.persistance.Chapter
-import com.albertomoya.readchat.persistance.Chat
-import com.albertomoya.readchat.persistance.User
+import com.albertomoya.readchat.persistance.*
 import com.albertomoya.readchat.utilities.FileUtil
 import com.albertomoya.readchat.utilities.NamesCollection
 import com.albertomoya.readchat.utilities.providers.*
@@ -32,10 +27,10 @@ class AddBookFragment : Fragment() {
 
     // Variables
     private val arrayCategories = ArrayList<String>()
-    private val auth = AuthProvider()
+    private val mAuth = AuthProvider()
     private val mStorage = ImageProvider()
     private val addBook = BookProvider()
-    private val userDB = UsersProvider()
+    private val usersProvider = UsersProvider()
     private val REQUEST_CODE_GALLERY = 1
     private lateinit var fImage: File
     private var uriImageBook: String = ""
@@ -46,6 +41,7 @@ class AddBookFragment : Fragment() {
         rootView = inflater.inflate(R.layout.fragment_add_book, container, false)
         setUpSpinner()
         onClicksButtonView()
+        activity!!.title = activity!!.applicationContext.getString(R.string.title_add_post_book)
         return rootView
     }
 
@@ -82,9 +78,9 @@ class AddBookFragment : Fragment() {
         val category = rootView.spinnerSearchableCategory.selectedItem
         val isChat = rootView.checkBoxChat.isChecked
         newBook.titleBook = title.toString()
-        newBook.uidAuthor = auth.getUid().toString()
+        newBook.uidAuthor = mAuth.getUid().toString()
         newBook.UID = newBook.uidAuthor+"_"+newBook.titleBook
-        newBook.emailAuthor = auth.getEmail().toString()
+        newBook.emailAuthor = mAuth.getEmail().toString()
         newBook.categoryBook = category.toString()
         newBook.descriptionBook = description.toString()
         newBook.chatBook = isChat
@@ -104,6 +100,21 @@ class AddBookFragment : Fragment() {
                 if (it.isSuccessful){
 
                     activity!!.snackBar("Libro creado correctamente")
+
+                    val favBook = FavouriteBook()
+                    favBook.uidFavChatBook = newBook.UIDChat
+                    favBook.uidFavBook = newBook.UID
+                    usersProvider.addFavouriteBook(mAuth.getUid().toString(),favBook)
+
+                    val chatUser = ChatUser()
+                    if (newBook.chatBook) {
+                        chatUser.uidChat =
+                            newBook.UIDChat
+                        chatUser.uidUser = mAuth.getUid().toString()
+                        usersProvider.addChatBookFavourite(chatUser)
+                        chatProvider.addUserToChat(chatUser.uidChat, chatUser)
+                    }
+
                     val intent = Intent(rootView.context, BookDetailAndEditActivity::class.java)
                     intent.putExtra("id",newBook.UID)
                     rootView.editTextTitleCreateBook.setText("")
@@ -118,17 +129,19 @@ class AddBookFragment : Fragment() {
             activity!!.snackBar("Error al crear libro, intentelo mas tarde")
         }
 
+
+
         updateDatabaseCurrentUser()
     }
 
     private fun updateDatabaseCurrentUser(){
         val user = User()
-        user.UID = auth.getUid().toString()
-        userDB.getUser(auth.getUid().toString()).addOnSuccessListener {
+        user.UID = mAuth.getUid().toString()
+        usersProvider.getUser(mAuth.getUid().toString()).addOnSuccessListener {
             if (it.exists()) {
                 user.quantityBooksUserCreated = it[NamesCollection.COLLECTION_USER_QUANTITY_BOOKS_USER_CREATE].toString().toInt()+1
                 Log.i("BOOKS",user.quantityBooksUserCreated.toString())
-                userDB.updateUserBooks(user).addOnCompleteListener {
+                usersProvider.updateUserBooks(user).addOnCompleteListener {
 
                 }
             }

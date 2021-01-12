@@ -34,4 +34,8 @@ class ChatProvider {
     fun getAllMessages(uidChat: String): Query {
         return mDb.document(uidChat).collection(NamesCollection.COLLECTION_CHAT_MESSAGES).orderBy(NamesCollection.COLLECTION_CHAT_MESSAGES_TIMESTAMP, Query.Direction.DESCENDING)
     }
+
+    fun getLastMessage(uidChat: String): Query{
+        return mDb.document(uidChat).collection(NamesCollection.COLLECTION_CHAT_MESSAGES).orderBy(NamesCollection.COLLECTION_CHAT_MESSAGES_TIMESTAMP, Query.Direction.DESCENDING).limit(1)
+    }
 }

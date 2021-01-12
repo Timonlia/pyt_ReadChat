@@ -42,11 +42,20 @@ public class BookFavAdapter extends FirestoreRecyclerAdapter<FavouriteBook, Book
             if (it.exists()){
                 String title = it.getString(NamesCollection.COLLECTION_BOOK_TITLE);
                 String category = it.getString(NamesCollection.COLLECTION_BOOK_CATEGORY);
-                holder.textViewBookTitle.setText(title);
+                String tituloReducido = "";
+                if (title.length() > 15) {
+                    tituloReducido = title.substring(0, 15) + "...";
+                    holder.textViewBookTitle.setText(tituloReducido);
+                } else {
+                    holder.textViewBookTitle.setText(title);
+                }
+
                 holder.textViewBookCategory.setText(category);
                 if (it.getString(NamesCollection.COLLECTION_BOOK_PHOTO)!=null)
                     if (!it.getString(NamesCollection.COLLECTION_BOOK_PHOTO).isEmpty())
                         Glide.with(context).load(it.getString(NamesCollection.COLLECTION_BOOK_PHOTO)).override(350,350).into(holder.imageViewBookPhoto);
+                    else
+                        Glide.with(context).load(R.drawable.new_photo_post).override(350,350).into(holder.imageViewBookPhoto);
             }
         });
         holder.mView.setOnClickListener(new View.OnClickListener() {

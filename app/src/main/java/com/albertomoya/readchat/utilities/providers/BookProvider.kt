@@ -71,4 +71,6 @@ class BookProvider {
         return mDb.document(idBook).collection(NamesCollection.COLLECTION_BOOK_CAPS).document(idChapter).delete()
     }
 
+
+
 }

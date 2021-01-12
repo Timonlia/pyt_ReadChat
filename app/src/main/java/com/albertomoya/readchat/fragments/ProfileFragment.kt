@@ -53,7 +53,7 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         rootView = inflater.inflate(R.layout.fragment_profile, container, false)
-
+        activity!!.title = activity!!.applicationContext.getString(R.string.title_my_profile)
         setOnClicksProfileFragment()
         setUpProfileFragment()
         listenerChangesCollection()
@@ -83,7 +83,7 @@ class ProfileFragment : Fragment() {
             if (it.exists()) {
                 rootView.textViewNickUser.text = it[NamesCollection.COLLECTION_USER_NICK].toString()
                 rootView.textViewFollowers.text =
-                    "Seguidores: ${it[NamesCollection.COLLECTION_USER_QUANTITY_FOLLOWERS].toString()}"
+                    "Votos: ${it[NamesCollection.COLLECTION_USER_QUANTITY_FOLLOWERS].toString()}"
                 rootView.textViewDescriptionUser.text =
                     it[NamesCollection.COLLECTION_USER_DESCRIPTION].toString()
                 rootView.textViewBooks.text =

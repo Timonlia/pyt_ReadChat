@@ -22,6 +22,8 @@ import com.bumptech.glide.Glide;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
+import java.text.SimpleDateFormat;
+
 public class ChatAdapter extends FirestoreRecyclerAdapter<ChatUser, ChatAdapter.ViewHolder> {
     private Context context;
 
@@ -35,6 +37,7 @@ public class ChatAdapter extends FirestoreRecyclerAdapter<ChatUser, ChatAdapter.
 
         new ChatProvider().getChatById(chat.getUidChat()).addOnSuccessListener(it -> {
             if (it.exists()){
+                holder.textViewLastMessage.setText(new SimpleDateFormat("dd-MM-yyyy").format(it.getDate(NamesCollection.COLLECTION_CHAT_TIMESTAMP)));
                 String nameChat = it.getString(NamesCollection.COLLECTION_CHAT_NAME);
                 String uriPhoto = it.getString(NamesCollection.COLLECTION_CHAT_PHOTO);
                 holder.textViewNameChat.setText(nameChat);

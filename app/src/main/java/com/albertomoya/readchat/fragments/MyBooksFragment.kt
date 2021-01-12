@@ -28,7 +28,7 @@ class MyBooksFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         rootView = inflater.inflate(R.layout.fragment_my_books, container, false)
-
+        activity!!.title = activity!!.applicationContext.getString(R.string.title_my_posts)
         val newLinerLayoutManager = GridLayoutManager(rootView.context,3)
         recyclerView = rootView.recyclerViewBookCurrentUser as RecyclerView
         recyclerView.layoutManager = newLinerLayoutManager

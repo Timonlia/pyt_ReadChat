@@ -75,4 +75,10 @@ class UsersProvider {
         return mDb.document(userId).collection(NamesCollection.COLLECTION_CHAT).document(idChat).delete()
     }
 
+    fun updateVote(user: User): Task<Void>{
+        val updateProfileMap = HashMap<String, Any>()
+        updateProfileMap[NamesCollection.COLLECTION_USER_QUANTITY_FOLLOWERS] = user.quantityFollowers
+        return mDb.document(user.UID).update(updateProfileMap)
+    }
+
 }

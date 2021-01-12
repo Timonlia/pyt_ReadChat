@@ -26,12 +26,22 @@
             android:background="@color/white"
             app:mt_placeholderColor="@color/colorSecondaryText"
             >
+            <TextView
+                android:id="@+id/nullPosts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="?actionBarSize"
+                android:text="No se han encontrado publicaciones..."
+                android:visibility="invisible"
+                android:layout_marginStart="8dp"/>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewBookHome"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-                android:layout_marginTop="?actionBarSize"/>
+                android:layout_marginTop="?actionBarSize"
+                />
         </com.mancj.materialsearchbar.MaterialSearchBar>
 
 

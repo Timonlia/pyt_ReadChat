@@ -5,7 +5,7 @@ class NamesCollection {
         // USERS
         const val COLLECTION_USER: String = "Users"
         const val COLLECTION_USER_NICK: String = "nick"
-        const val COLLECTION_USER_UID: String = "UID"
+        const val COLLECTION_USER_UID: String = "uid"
         const val COLLECTION_USER_EMAIL: String = "email"
         const val COLLECTION_USER_FULL_NAME: String = "fullName"
         const val COLLECTION_USER_DATE_CREATED_ON: String = "createdOn"

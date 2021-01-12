@@ -15,6 +15,7 @@
     <color name="color_background_button">#3A7DCA</color>
     <color name="colorGooglePlus">#DD4B39</color>
     <color name="colorGooglePlusDark">#B92D21</color>
+    <color name="colorBackgroundChat">#8E8B8B</color>
 
     <color name="md_blue_50">#e3f2fd</color>
     <color name="md_blue_100">#bbdefb</color>
