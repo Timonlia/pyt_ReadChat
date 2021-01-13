@@ -83,6 +83,11 @@
     // Post
     <string name="post_not_have_post">No hay publicaciones...</string>
     <string name="post_have_posts">Publicaciones</string>
+    <string name="post_not_have_description">Esta publicación no tiene descripción...</string>
     // User
     <string name="user_not_have_description">Este usuario no tiene descripción...</string>
+    <string name="current_user_not_have_description">Aún no tienes descripción...</string>
+    // Chapter
+    <string name="chapter_not_have_chapter">Esta publicación no tiene capítulos aún...</string>
+    <string name="chapter_have_chapter">Capítulos</string>
 </resources>

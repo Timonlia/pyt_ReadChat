@@ -18,6 +18,7 @@ import com.albertomoya.readchat.activities.others.SelectChapterToReadBookActivit
 import com.albertomoya.readchat.persistance.Book;
 import com.albertomoya.readchat.persistance.FavouriteBook;
 import com.albertomoya.readchat.utilities.NamesCollection;
+import com.albertomoya.readchat.utilities.providers.AuthProvider;
 import com.albertomoya.readchat.utilities.providers.BookProvider;
 import com.bumptech.glide.Glide;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
@@ -39,7 +40,7 @@ public class BookFavAdapter extends FirestoreRecyclerAdapter<FavouriteBook, Book
         String postBookId = document.getId();
 
         new BookProvider().getPostById(postBookId).addOnSuccessListener(it -> {
-            if (it.exists()){
+            if (it.exists()) {
                 String title = it.getString(NamesCollection.COLLECTION_BOOK_TITLE);
                 String category = it.getString(NamesCollection.COLLECTION_BOOK_CATEGORY);
                 String tituloReducido = "";
@@ -51,12 +52,13 @@ public class BookFavAdapter extends FirestoreRecyclerAdapter<FavouriteBook, Book
                 }
 
                 holder.textViewBookCategory.setText(category);
-                if (it.getString(NamesCollection.COLLECTION_BOOK_PHOTO)!=null)
+                if (it.getString(NamesCollection.COLLECTION_BOOK_PHOTO) != null)
                     if (!it.getString(NamesCollection.COLLECTION_BOOK_PHOTO).isEmpty())
-                        Glide.with(context).load(it.getString(NamesCollection.COLLECTION_BOOK_PHOTO)).override(350,350).into(holder.imageViewBookPhoto);
+                        Glide.with(context).load(it.getString(NamesCollection.COLLECTION_BOOK_PHOTO)).override(350, 350).into(holder.imageViewBookPhoto);
                     else
-                        Glide.with(context).load(R.drawable.new_photo_post).override(350,350).into(holder.imageViewBookPhoto);
+                        Glide.with(context).load(R.drawable.new_photo_post).override(350, 350).into(holder.imageViewBookPhoto);
             }
+
         });
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -107,6 +107,7 @@ class BookPostDetailActivity : ToolbarActivity() {
                                     val favBook = FavouriteBook()
                                     favBook.uidFavChatBook = itPostFilled.getString(NamesCollection.COLLECTION_BOOK_UID_CHAT).toString()
                                     favBook.uidFavBook = itPostFilled.getString(NamesCollection.COLLECTION_BOOK_UID).toString()
+                                    favBook.uidAuthor = itPostFilled.getString(NamesCollection.COLLECTION_BOOK_UID_AUTHOR).toString()
                                     userProvider.addFavouriteBook(mAuth.getUid().toString(),favBook)
 
                                     val chatUser = ChatUser()

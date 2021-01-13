@@ -42,6 +42,7 @@ class NamesCollection {
         const val COLLECTION_USER_FAV_BOOK = "FavBook"
         const val COLLECTION_USER_FAV_BOOK_UID = "uidFavBook"
         const val COLLECTION_USER_FAV_BOOK_UID_CHAT = "uidFavChatBook"
+        const val COLLECTION_USER_FAV_BOOK_UID_AUTHOR = "uidAuthor"
         // CHAT
         const val COLLECTION_CHAT = "Chats"
         const val COLLECTION_CHAT_UID = "uidChat"

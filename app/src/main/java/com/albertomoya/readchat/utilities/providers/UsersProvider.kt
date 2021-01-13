@@ -8,6 +8,7 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.*
 
 class UsersProvider {
+    private val mAuth = AuthProvider()
     private val mDb: CollectionReference = FirebaseFirestore.getInstance().collection(NamesCollection.COLLECTION_USER)
 
     fun getUser(id: String): Task<DocumentSnapshot> {
@@ -60,7 +61,7 @@ class UsersProvider {
     }
 
     fun getAllFavourites(userId: String): Query{
-        return mDb.document(userId).collection(NamesCollection.COLLECTION_USER_FAV_BOOK)
+        return mDb.document(userId).collection(NamesCollection.COLLECTION_USER_FAV_BOOK).whereNotEqualTo(NamesCollection.COLLECTION_USER_FAV_BOOK_UID_AUTHOR,mAuth.getUid())
     }
 
     fun addChatBookFavourite(chat: ChatUser): Task<Void>{

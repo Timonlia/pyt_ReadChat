@@ -104,6 +104,7 @@ class AddBookFragment : Fragment() {
                     val favBook = FavouriteBook()
                     favBook.uidFavChatBook = newBook.UIDChat
                     favBook.uidFavBook = newBook.UID
+                    favBook.uidAuthor = mAuth.getUid().toString()
                     usersProvider.addFavouriteBook(mAuth.getUid().toString(),favBook)
 
                     val chatUser = ChatUser()
