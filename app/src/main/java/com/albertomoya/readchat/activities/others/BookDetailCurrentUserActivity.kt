@@ -43,11 +43,11 @@ class BookDetailCurrentUserActivity : ToolbarActivity() {
             val book = Book()
             book.historyText = editTextBookDetailCurrentUser.text.toString()
             book.UID = idBookPost
-            bookProvider.updateBook(book).addOnCompleteListener {
+            bookProvider.updateBookQuantityCaps(book).addOnCompleteListener {
                 if (it.isSuccessful)
-                    snackBar("Se ha guardado correctamente")
+                    snackBar(applicationContext.getString(R.string.snack_bar_post_great_create))
                 else
-                    snackBar("Error al guardar")
+                    snackBar(applicationContext.getString(R.string.snack_bar_post_error_create))
             }
         }
     }
@@ -56,12 +56,11 @@ class BookDetailCurrentUserActivity : ToolbarActivity() {
         bookProvider.getPostById(idBookPost).addOnSuccessListener {
             if (it.exists()) {
                 if (it.contains(NamesCollection.COLLECTION_BOOK_TITLE)) {
-                    textViewTitleBookDetailCurrentUser.text =
-                        it.getString(NamesCollection.COLLECTION_BOOK_TITLE)
+                    textViewTitleBookDetailCurrentUser.setText(it.getString(NamesCollection.COLLECTION_BOOK_TITLE))
                 }
                 if (it.contains(NamesCollection.COLLECTION_BOOK_CATEGORY)) {
                     textViewCategoryBookDetailCurrentUser.text =
-                        "Categoria: ${it.getString(NamesCollection.COLLECTION_BOOK_CATEGORY)}"
+                        "${applicationContext.getString(R.string.category)}: ${it.getString(NamesCollection.COLLECTION_BOOK_CATEGORY)}"
                 }
                 if (it.contains(NamesCollection.COLLECTION_BOOK_PHOTO)) {
                     if (!it.getString(NamesCollection.COLLECTION_BOOK_PHOTO).isNullOrEmpty()) {

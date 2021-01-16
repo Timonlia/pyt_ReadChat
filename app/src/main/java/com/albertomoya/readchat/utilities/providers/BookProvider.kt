@@ -42,9 +42,27 @@ class BookProvider {
         return mDb.orderBy(NamesCollection.COLLECTION_BOOK_TITLE).startAt(title).endAt(title+'\uf8ff')
     }
 
-    fun updateBook(book: Book): Task<Void> {
+    fun updateBookQuantityCaps(book: Book): Task<Void> {
         val updateProfileMap = HashMap<String, Any>()
         updateProfileMap[NamesCollection.COLLECTION_BOOK_QUANTITY_CAPS] = book.quantityCaps
+        return mDb.document(book.UID).update(updateProfileMap)
+    }
+
+    fun updateBookTitle(book: Book): Task<Void> {
+        val updateProfileMap = HashMap<String, Any>()
+        updateProfileMap[NamesCollection.COLLECTION_BOOK_TITLE] = book.titleBook
+        return mDb.document(book.UID).update(updateProfileMap)
+    }
+
+    fun updateBookPhoto(book: Book): Task<Void> {
+        val updateProfileMap = HashMap<String, Any>()
+        updateProfileMap[NamesCollection.COLLECTION_BOOK_PHOTO] = book.photoBook
+        return mDb.document(book.UID).update(updateProfileMap)
+    }
+
+    fun updateBookDescription(book: Book): Task<Void> {
+        val updateProfileMap = HashMap<String, Any>()
+        updateProfileMap[NamesCollection.COLLECTION_BOOK_DESCRIPTION_BOOK] = book.descriptionBook
         return mDb.document(book.UID).update(updateProfileMap)
     }
 

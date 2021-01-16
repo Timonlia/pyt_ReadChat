@@ -38,9 +38,12 @@ class SignUpActivity : AppCompatActivity() {
             val email = textInputEmail.text.toString()
             val password = textInputPassword.text.toString()
             val user = textInputUser.text.toString()
-            if (user.isNotEmpty()) signUpWithEmailAndPassword(email,password,user) else snackBar("Rellena el campo usuario")
+            if (user.isNotEmpty() && password.isNotEmpty() && email.isNotEmpty()){
+                signUpWithEmailAndPassword(email,password,user)
+            } else{
+                toast(applicationContext.getString(R.string.snack_bar_fill_all_fields))
+            }
         }
-        
     }
 
     private fun validateTextView(){

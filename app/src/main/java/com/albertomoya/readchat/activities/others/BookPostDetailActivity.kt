@@ -197,7 +197,7 @@ class BookPostDetailActivity : ToolbarActivity() {
                     userNameAuthorDetail.text = it.getString(NamesCollection.COLLECTION_USER_NICK)
                 }
                 if (it.contains(NamesCollection.COLLECTION_USER_QUANTITY_FOLLOWERS)){
-                    followsAuthorDetail.text = "Votos: ${it[NamesCollection.COLLECTION_USER_QUANTITY_FOLLOWERS].toString()}"
+                    followsAuthorDetail.text = "${applicationContext.getString(R.string.votes)}: ${it[NamesCollection.COLLECTION_USER_QUANTITY_FOLLOWERS].toString()}"
                 }
                 if (it.contains(NamesCollection.COLLECTION_USER_PHOTO_URL)){
                     Glide.with(applicationContext).load(it.getString(NamesCollection.COLLECTION_USER_PHOTO_URL)).override(350,350).into(photoUserDetail)

@@ -63,17 +63,22 @@ class MainActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelectedL
     private fun loadFragmentById(id: Int){
         when(id){
             R.id.nav_home -> { fragmentTransaction(HomeFragment())
-                fragment = 0 }
+                fragment = 0
+                navView.menu.findItem(R.id.nav_profile).isChecked = false}
             R.id.nav_my_books -> { fragmentTransaction(MyBooksFragment())
-                fragment = 1 }
+                fragment = 1
+                navView.menu.findItem(R.id.nav_profile).isChecked = false}
             R.id.nav_create_book -> { fragmentTransaction(AddBookFragment())
-                fragment = 1 }
+                fragment = 1
+                navView.menu.findItem(R.id.nav_profile).isChecked = false}
             R.id.nav_fav_books -> { fragmentTransaction(FavouriteBooksFragment())
-                fragment = 1 }
+                fragment = 1
+                navView.menu.findItem(R.id.nav_profile).isChecked = false}
             R.id.nav_chats -> { fragmentTransaction(ChatFragment())
-                fragment = 1 }
+                fragment = 1
+                navView.menu.findItem(R.id.nav_profile).isChecked = false}
             R.id.nav_profile -> { fragmentTransaction(ProfileFragment())
-                fragment = 1 }
+                fragment = 1}
             R.id.nav_logout -> LogoutDialog().show(supportFragmentManager, "")
         }
     }
@@ -133,10 +138,8 @@ class MainActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelectedL
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_toolbar_options, menu)
-
         val menuItem = menu!!.findItem(R.id.item_profile)
         val view: View = MenuItemCompat.getActionView(menuItem)
-        // val view: View = menuItem.actionView
         val profileImage: CircleImageView = view.findViewById(R.id.toolbar_profile_image)
         val doc = usrProvider.getUserForSnapshot(authProvider.getUid().toString())
         doc.addSnapshotListener(object : java.util.EventListener,
@@ -153,7 +156,12 @@ class MainActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelectedL
         })
         profileImage.setOnClickListener {
             navView.menu.findItem(R.id.nav_profile).isChecked = true
+            navView.menu.findItem(R.id.nav_logout).isChecked = false
             navView.menu.getItem(0).isChecked = false
+            navView.menu.getItem(1).isChecked = false
+            navView.menu.getItem(2).isChecked = false
+            navView.menu.getItem(3).isChecked = false
+            navView.menu.getItem(4).isChecked = false
             fragmentTransaction(ProfileFragment())
             fragment = 1
 

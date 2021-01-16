@@ -44,6 +44,8 @@ public class ChatAdapter extends FirestoreRecyclerAdapter<ChatUser, ChatAdapter.
                 if (uriPhoto!=null)
                     if (!uriPhoto.isEmpty())
                         Glide.with(context).load(uriPhoto).override(350,350).into(holder.imageViewPhotoChat);
+                    else
+                        Glide.with(context).load(R.drawable.new_photo_post).override(350,350).into(holder.imageViewPhotoChat);
             }
         });
 

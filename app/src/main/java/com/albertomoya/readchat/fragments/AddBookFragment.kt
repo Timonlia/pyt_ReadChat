@@ -36,6 +36,7 @@ class AddBookFragment : Fragment() {
     private var uriImageBook: String = ""
     private lateinit var rootView: View
     private val chatProvider = ChatProvider()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         rootView = inflater.inflate(R.layout.fragment_add_book, container, false)
@@ -53,7 +54,7 @@ class AddBookFragment : Fragment() {
             if (validateEditText())
                 createBook()
             else
-                activity!!.snackBar("Porfavor rellena los campos 'Title' y 'Description'")
+                activity!!.snackBar(activity!!.applicationContext.getString(R.string.snack_bar_fill_all_fields))
         }
     }
 
@@ -99,7 +100,7 @@ class AddBookFragment : Fragment() {
             addBook.createBook(newBook).addOnCompleteListener {
                 if (it.isSuccessful){
 
-                    activity!!.snackBar("Libro creado correctamente")
+                    activity!!.snackBar(activity!!.applicationContext.getString(R.string.snack_bar_post_great_create))
 
                     val favBook = FavouriteBook()
                     favBook.uidFavChatBook = newBook.UIDChat
@@ -127,7 +128,7 @@ class AddBookFragment : Fragment() {
             }
 
         }catch (e:Exception){
-            activity!!.snackBar("Error al crear libro, intentelo mas tarde")
+            activity!!.snackBar(activity!!.applicationContext.getString(R.string.snack_bar_post_error_create))
         }
 
 

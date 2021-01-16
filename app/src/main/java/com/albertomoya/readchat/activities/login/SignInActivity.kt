@@ -81,7 +81,7 @@ class SignInActivity : AppCompatActivity() {
                        view = findViewById(
                            R.id.activity_sign_in
                        ),
-                       action = "Resend"
+                       action = applicationContext.getString(R.string.snack_bar_resend)
                    ){
                        mAuth.currentUser!!.sendEmailVerification()
                    }

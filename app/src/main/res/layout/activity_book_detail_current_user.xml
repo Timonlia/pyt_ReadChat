@@ -24,7 +24,7 @@
             app:layout_constraintTop_toBottomOf="@+id/toolbar"
             tools:srcCompat="@tools:sample/avatars" />
 
-        <TextView
+        <EditText
             android:id="@+id/textViewTitleBookDetailCurrentUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

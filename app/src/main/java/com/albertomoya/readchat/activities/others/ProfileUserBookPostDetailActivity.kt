@@ -68,10 +68,10 @@ class ProfileUserBookPostDetailActivity : ToolbarActivity() {
                     else textViewDescriptionUserDetail.text = it.getString(NamesCollection.COLLECTION_USER_DESCRIPTION)
                 }
                 if (it.contains(NamesCollection.COLLECTION_USER_QUANTITY_BOOKS_USER_CREATE)){
-                    textViewBooksDetail.text = "Libros: ${it[NamesCollection.COLLECTION_USER_QUANTITY_BOOKS_USER_CREATE].toString()}"
+                    textViewBooksDetail.text = "${applicationContext.getString(R.string.books)}: ${it[NamesCollection.COLLECTION_USER_QUANTITY_BOOKS_USER_CREATE].toString()}"
                 }
                 if (it.contains(NamesCollection.COLLECTION_USER_QUANTITY_FOLLOWERS)){
-                    textViewFollowersDetail.text = "Votos: ${it[NamesCollection.COLLECTION_USER_QUANTITY_FOLLOWERS].toString()}"
+                    textViewFollowersDetail.text = "${applicationContext.getString(R.string.votes)}: ${it[NamesCollection.COLLECTION_USER_QUANTITY_FOLLOWERS].toString()}"
                 }
                 if (it.contains(NamesCollection.COLLECTION_USER_PHOTO_URL)){
                     Glide.with(this).load(it.getString(NamesCollection.COLLECTION_USER_PHOTO_URL)).override(350,350).into(imageProfileFragmentDetail)

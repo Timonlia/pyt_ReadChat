@@ -12,7 +12,7 @@ import com.albertomoya.readchat.utilities.providers.AuthProvider
 import com.albertomoya.readchat.utilities.providers.BookProvider
 import kotlinx.android.synthetic.main.dialog_add_chapter.view.*
 
-class AddChapter constructor(var idBook: String, var titleBook: String, var countChapter: String): DialogFragment() {
+class AddChapterDialog constructor(var idBook: String, var titleBook: String, var countChapter: String): DialogFragment() {
 
 
 
@@ -40,14 +40,14 @@ class AddChapter constructor(var idBook: String, var titleBook: String, var coun
                             val book = Book()
                             book.quantityCaps = countChapter.toInt()+1
                             book.UID = idBook
-                            BookProvider().updateBook(book).addOnCompleteListener {
+                            BookProvider().updateBookQuantityCaps(book).addOnCompleteListener {
 
                             }
                         }
                     }
                 } else {
-                    fragmentManager?.let { AddChapter(idBook,titleBook,countChapter).show(it,"") }
-                    activity!!.toast("Rellena el campo titulo, intentelo de nuevo")
+                    fragmentManager?.let { AddChapterDialog(idBook,titleBook,countChapter).show(it,"") }
+                    activity!!.toast(activity!!.applicationContext.getString(R.string.snack_bar_fill_all_fields))
                 }
             }
             .setNegativeButton(getString(R.string.button_cancel)){_,_ ->}

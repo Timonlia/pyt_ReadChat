@@ -15,6 +15,7 @@
     <string name="text_view_no_tiene_cuenta">¿No tienes cuenta?</string>
     <string name="text_view_regístrate">Registrate aqui</string>
     <string name="edit_text_email_forgot_password">Correo Electrónico</string>
+
     <string name="button_resend_email">Volver a enviar</string>
     <string name="button_ok">Aceptar</string>
     <string name="button_cancel">Cancelar</string>
@@ -22,6 +23,7 @@
     <string name="nickname">Nickname</string>
     <string name="fullname">Nombre completo</string>
     <string name="description">Descripción</string>
+    <string name="title">Título</string>
     <string name="save_changes_edit_profile">Guardar Cambios</string>
     <string name="back_to_home">Volver al inicio</string>
     <string name="save_changes">Guarda los cambios para salir</string>
@@ -30,19 +32,32 @@
     <string name="cant_save_changes">No se han podido guardar los cambios, intentelo mas tarde.</string>
     <string name="book_title">Título</string>
     <string name="book_category">Categoría</string>
-    // Snackbars
+    // Snackbars / Toast
     <string name="snackbar_confirm_email">Revisa tu correo, y confirma el email</string>
     <string name="snackbar_need_register">Error, compreba que hayas introducido tus datos correctamente</string>
     <string name="snackbar_email_confirm_send">Te acabamos de mandar un email de confirmacion</string>
     <string name="snackbar_email_change_password">Te acabamos de mandar un email para tu cambio de contraseña vinculado al correo </string>
     <string name="snackbar_unexpected_error_register">Ha habido un error inesperado, vuelve a intentarlo</string>
     <string name="write_all_data">Porfavor rellena los campos</string>
-
-    // Errors
+    <string name="snack_bar_resend">Reenviar</string>
+    <string name="snack_bar_fill_all_fields">Rellena todos los campos</string>
+    <string name="snack_bar_post_great_create">La publicación se creo correctamente</string>
+    <string name="snack_bar_post_error_create">Error al crear la publicación</string>
+    <string name="snack_bar_check_email">Revisa tu correo</string>
     <string name="error_email_is_not_valid">El email no es valido</string>
     <string name="error_email_is_empty">Rellena el campo email, intentelo de nuevo</string>
     <string name="error_password_is_not_valid">1-minúscula, 1-mayúscula, 1-número y mínimo 6 caracteres</string>
     <string name="error_confirm_password_is_not_valid">Los campos CONTRASEÑA y CONFIRMAR CONTRASEÑA no son iguales</string>
+
+    // Dialog
+    <string name="dialog_new_title">Nuevo título...</string>
+    <string name="dialog_new_description">Nueva descripción...</string>
+
+    <string name="category">Categoría</string>
+    <string name="votes">Votos</string>
+    <string name="books">Libros</string>
+    // Errors
+
 
     // NavigationDrawer
     <string name="nav_open_drawer">Navigation is open</string>
@@ -57,7 +72,6 @@
     <string name="complete_you_profile">Completa tu perfil</string>
     // Fragment Profile
     <string name="followers">Seguidores: </string>
-    <string name="books">Libros: </string>
     <string name="edit_profile">Editar Perfil</string>
     <string name="created_on">Con nosotros desde:</string>
     <string name="complete_your_profile">Completa tu perfil</string>
