@@ -74,10 +74,10 @@ class ProfileUserBookPostDetailActivity : ToolbarActivity() {
                     textViewFollowersDetail.text = "${applicationContext.getString(R.string.votes)}: ${it[NamesCollection.COLLECTION_USER_QUANTITY_FOLLOWERS].toString()}"
                 }
                 if (it.contains(NamesCollection.COLLECTION_USER_PHOTO_URL)){
-                    Glide.with(this).load(it.getString(NamesCollection.COLLECTION_USER_PHOTO_URL)).override(350,350).into(imageProfileFragmentDetail)
+                    Glide.with(applicationContext).load(it.getString(NamesCollection.COLLECTION_USER_PHOTO_URL)).override(350,350).into(imageProfileFragmentDetail)
                 }
                 if (it.contains(NamesCollection.COLLECTION_USER_PHOTO_BACKGROUND)){
-                    Glide.with(this).load(it.getString(NamesCollection.COLLECTION_USER_PHOTO_BACKGROUND)).override(350,350).into(imageProfileBackgroundFragmentDetail)
+                    Glide.with(applicationContext).load(it.getString(NamesCollection.COLLECTION_USER_PHOTO_BACKGROUND)).override(350,350).into(imageProfileBackgroundFragmentDetail)
                 }
             }
         }

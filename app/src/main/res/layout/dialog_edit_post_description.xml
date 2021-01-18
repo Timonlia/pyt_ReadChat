@@ -28,6 +28,7 @@
                 android:hint="@string/description"
                 android:inputType="textEmailAddress"
                 android:maxLength="600"
+                android:maxLines="6"
                 android:textSize="15dp"
                 android:textColorHint="@color/colorSecondaryText"/>
         </com.google.android.material.textfield.TextInputLayout>

@@ -15,7 +15,7 @@
     <string name="text_view_no_tiene_cuenta">¿No tienes cuenta?</string>
     <string name="text_view_regístrate">Registrate aqui</string>
     <string name="edit_text_email_forgot_password">Correo Electrónico</string>
-
+    <string name="chat_create_info">La siguiente opción permitira que tu aplicación tenga chat o no. En este chat se agregaran a todos aquellos Usuarios que agregen a favoritos esta publicación</string>
     <string name="button_resend_email">Volver a enviar</string>
     <string name="button_ok">Aceptar</string>
     <string name="button_cancel">Cancelar</string>
@@ -48,16 +48,30 @@
     <string name="error_email_is_empty">Rellena el campo email, intentelo de nuevo</string>
     <string name="error_password_is_not_valid">1-minúscula, 1-mayúscula, 1-número y mínimo 6 caracteres</string>
     <string name="error_confirm_password_is_not_valid">Los campos CONTRASEÑA y CONFIRMAR CONTRASEÑA no son iguales</string>
-
+    //Categories
+    <string name="category_science_fiction">Ciencia Ficcion</string>
+    <string name="category_fantasy">Fantasia</string>
+    <string name="category_novel">Novela</string>
+    <string name="category_adventure">Aventura</string>
+    <string name="category_humor">Humor</string>
+    <string name="category_self_help">Autoayuda</string>
+    <string name="category_autobiographical">Autobiográficos</string>
+    <string name="category_scientists">Científicos</string>
+    <string name="category_sport">Deporte</string>
+    <string name="category_mystery">Misterio</string>
+    <string name="category_fan_fics">Fanfics</string>
     // Dialog
     <string name="dialog_new_title">Nuevo título...</string>
     <string name="dialog_new_description">Nueva descripción...</string>
 
+    <string name="search">Buscar...</string>
     <string name="category">Categoría</string>
     <string name="votes">Votos</string>
     <string name="books">Libros</string>
+    <string name="delete_chaper">Eliminar capítulo</string>
     // Errors
 
+    <string name="begin_write_chapter">Empieza a escribir tu capítulo...</string>
 
     // NavigationDrawer
     <string name="nav_open_drawer">Navigation is open</string>

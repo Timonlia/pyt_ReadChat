@@ -59,13 +59,19 @@ class AddBookFragment : Fragment() {
     }
 
     private fun setUpSpinner(){
-        arrayCategories.add("Ciencia Ficcion")
-        arrayCategories.add("Fantasia")
-        arrayCategories.add("Novela")
-        arrayCategories.add("Aventura")
-        arrayCategories.add("Humor")
-        arrayCategories.add("Autoayuda")
-        arrayCategories.add("Autobiográficos")
+        arrayCategories.add(activity!!.applicationContext.getString(R.string.category_science_fiction))
+        arrayCategories.add(activity!!.applicationContext.getString(R.string.category_humor))
+        arrayCategories.add(activity!!.applicationContext.getString(R.string.category_adventure))
+        arrayCategories.add(activity!!.applicationContext.getString(R.string.category_fan_fics))
+        arrayCategories.add(activity!!.applicationContext.getString(R.string.category_fantasy))
+        arrayCategories.add(activity!!.applicationContext.getString(R.string.category_novel))
+        arrayCategories.add(activity!!.applicationContext.getString(R.string.category_mystery))
+        arrayCategories.add(activity!!.applicationContext.getString(R.string.category_self_help))
+        arrayCategories.add(activity!!.applicationContext.getString(R.string.category_autobiographical))
+        arrayCategories.add(activity!!.applicationContext.getString(R.string.category_scientists))
+        arrayCategories.add(activity!!.applicationContext.getString(R.string.category_sport))
+
+
 
         val adapter = ArrayAdapter(rootView.context,android.R.layout.simple_spinner_item,arrayCategories)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)

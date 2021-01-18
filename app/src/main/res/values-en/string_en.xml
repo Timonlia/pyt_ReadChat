@@ -1,0 +1,121 @@
+<resources>
+    <string name="app_name">Read Chat</string>
+
+    <string name="text_view_sign_up">Create account on ReadChat</string>
+    <string name="text_view_forgot_password">Wow...I forgot my password</string>
+    <string name="button_iniciar_sesión_email">Log In</string>
+    <string name="button_iniciar_sesion_google">Login with Google</string>
+    <string name="edit_text_hint_user">User Name</string>
+    <string name="edit_text_hint_email">Email Address</string>
+    <string name="edit_text_hint_password">Password</string>
+    <string name="edit_text_hint_confirm_password">Confirm Password</string>
+    <string name="button_back_login">Back to Login</string>
+    <string name="button_sign_up">Sign Up</string>
+    <string name="text_view_title_sign_up">Sign up now</string>
+    <string name="text_view_no_tiene_cuenta">You do not have an account?</string>
+    <string name="text_view_regístrate">Sign up here</string>
+    <string name="edit_text_email_forgot_password">Email Address</string>
+
+    <string name="button_resend_email">Resend</string>
+    <string name="button_ok">Ok</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="title_dialog_forgot_password">Restore password</string>
+    <string name="nickname">Nickname</string>
+    <string name="fullname">Full Name</string>
+    <string name="description">Description</string>
+    <string name="title">Title</string>
+    <string name="save_changes_edit_profile">Save Changes</string>
+    <string name="back_to_home">Back to home</string>
+    <string name="save_changes">Save changes to exit</string>
+    <string name="changes_save_correctly">Changes have been successfully saved</string>
+    <string name="not_have_changes_to_save">There are no changes to save</string>
+    <string name="cant_save_changes">The changes could not be saved, please try again later.</string>
+    <string name="book_title">Title</string>
+    <string name="book_category">Category</string>
+    // Snackbars / Toast
+    <string name="snackbar_confirm_email">Check your email, and confirm the email</string>
+    <string name="snackbar_need_register">Error, check that you have entered your data correctly</string>
+    <string name="snackbar_email_confirm_send">We just sent you a confirmation email</string>
+    <string name="snackbar_email_change_password">We have just sent you an email for your password change linked to the email </string>
+    <string name="snackbar_unexpected_error_register">There was an unexpected error, please try again</string>
+    <string name="write_all_data">Please fill in the fields</string>
+    <string name="snack_bar_resend">Resend</string>
+    <string name="snack_bar_fill_all_fields">Fill in all the fields</string>
+    <string name="snack_bar_post_great_create">Post was created successfully</string>
+    <string name="snack_bar_post_error_create">Post creation failed</string>
+    <string name="snack_bar_check_email">Check your email</string>
+    <string name="error_email_is_not_valid">The email is not valid</string>
+    <string name="error_email_is_empty">Fill in the email field, try again</string>
+    <string name="error_password_is_not_valid">1-lowercase, 1-uppercase, 1-number and minimum 6 characters</string>
+    <string name="error_confirm_password_is_not_valid">The PASSWORD and CONFIRM PASSWORD fields are not the same</string>
+    <string name="chat_create_info">The next option will allow your application to have chat or not. In this chat all those Users who bookmark this publication will be added</string>
+    //Categories
+    <string name="category_science_fiction">Science Fiction</string>
+    <string name="category_fantasy">Fantasy</string>
+    <string name="category_novel">Novel</string>
+    <string name="category_adventure">Adventure</string>
+    <string name="category_humor">Humor</string>
+    <string name="category_self_help">Self-help</string>
+    <string name="category_autobiographical">Autobiographical</string>
+    <string name="category_scientists">Scientists</string>
+    <string name="category_sport">Sport</string>
+    <string name="category_mystery">Mystery</string>
+    <string name="category_fan_fics">Fanfics</string>
+    // Dialog
+    <string name="dialog_new_title">New title...</string>
+    <string name="dialog_new_description">New description</string>
+    <string name="search">Search...</string>
+    <string name="category">Category</string>
+    <string name="votes">Votes</string>
+    <string name="books">Books</string>
+    <string name="delete_chaper">Delete chapter</string>
+    // Errors
+
+    <string name="begin_write_chapter">Start writing your chapter...</string>
+
+    // NavigationDrawer
+    <string name="nav_open_drawer">Navigation is open</string>
+    <string name="nav_close_drawer">Navigation is close</string>
+
+    // Dialogs
+    <string name="logout_want_it">Do you want to log out?</string>
+    <string name="revise_you_email">Check your email:</string>
+    <string name="title_new_chapter">How do you want to title the chapter?</string>
+    <string name="add_title_chapter">Chapter title</string>
+    // Header
+    <string name="complete_you_profile">Complete your profile</string>
+    // Fragment Profile
+    <string name="followers">Votes:</string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="created_on">With us since:</string>
+    <string name="complete_your_profile">Complete your profile</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_book">Create book</string>
+    <string name="check_box_chat">Do you want to add chat?</string>
+    // Titles
+    <string name="title_chat">Chats</string>
+    <string name="title_add_post_book">Add book</string>
+    <string name="title_fav_posts">Favorite books</string>
+    <string name="title_my_posts">My books</string>
+    <string name="title_my_profile">Profile</string>
+    <string name="title_detail_post">Post details</string>
+    // Navigation Drawer
+    <string name="item_home">Home</string>
+    <string name="item_my_books">My books</string>
+    <string name="item_add_book">Add book</string>
+    <string name="item_fav_books">Favorite books</string>
+    <string name="item_chat">Chats</string>
+    <string name="item_profile">Profile</string>
+    <string name="item_logout">Log out</string>
+    <string name="item_space_other">Others</string>
+    // Post
+    <string name="post_not_have_post">No posts ...</string>
+    <string name="post_have_posts">Posts</string>
+    <string name="post_not_have_description">This post has no description...</string>
+    // User
+    <string name="user_not_have_description">This user has no description...</string>
+    <string name="current_user_not_have_description">You don t have a description yet...</string>
+    // Chapter
+    <string name="chapter_not_have_chapter">This post has no chapters yet...</string>
+    <string name="chapter_have_chapter">Chapters</string>
+</resources>

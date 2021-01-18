@@ -27,7 +27,8 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/title"
                 android:inputType="textEmailAddress"
-                android:maxLength="600"
+                android:maxLength="36"
+                android:maxLines="2"
                 android:textSize="15dp"
                 android:textColorHint="@color/colorSecondaryText"/>
         </com.google.android.material.textfield.TextInputLayout>
