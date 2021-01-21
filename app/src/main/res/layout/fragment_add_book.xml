@@ -126,7 +126,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            android:text="Crear Publicación"
+            android:text="@string/create_post"
             android:textColor="@color/colorWhite"
             android:background="@drawable/button_ripple_register"
             app:layout_constraintBottom_toBottomOf="parent"
