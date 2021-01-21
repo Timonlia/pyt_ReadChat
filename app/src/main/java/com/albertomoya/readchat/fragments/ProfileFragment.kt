@@ -83,11 +83,11 @@ class ProfileFragment : Fragment() {
             if (it.exists()) {
                 rootView.textViewNickUser.text = it[NamesCollection.COLLECTION_USER_NICK].toString()
                 rootView.textViewFollowers.text =
-                    "${activity!!.applicationContext.getString(R.string.votes)}: ${it[NamesCollection.COLLECTION_USER_QUANTITY_FOLLOWERS].toString()}"
+                    "${rootView.context.getString(R.string.votes)}: ${it[NamesCollection.COLLECTION_USER_QUANTITY_FOLLOWERS].toString()}"
                 rootView.textViewDescriptionUser.text =
                     it[NamesCollection.COLLECTION_USER_DESCRIPTION].toString()
                 rootView.textViewBooks.text =
-                    "${activity!!.applicationContext.getString(R.string.books)}: ${it[NamesCollection.COLLECTION_USER_QUANTITY_BOOKS_USER_CREATE].toString()}"
+                    "${rootView.context.getString(R.string.books)}: ${it[NamesCollection.COLLECTION_USER_QUANTITY_BOOKS_USER_CREATE].toString()}"
                 val urlPhotoProfile = it[NamesCollection.COLLECTION_USER_PHOTO_URL].toString()
                 val urlPhotoProfileBackground = it[NamesCollection.COLLECTION_USER_PHOTO_BACKGROUND].toString()
                 Glide

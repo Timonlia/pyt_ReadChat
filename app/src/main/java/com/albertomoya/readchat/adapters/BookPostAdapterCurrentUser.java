@@ -13,8 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.albertomoya.readchat.R;
 import com.albertomoya.readchat.activities.others.BookDetailAndEditActivity;
-import com.albertomoya.readchat.activities.others.BookDetailCurrentUserActivity;
-import com.albertomoya.readchat.activities.others.BookPostDetailActivity;
 import com.albertomoya.readchat.persistance.Book;
 import com.bumptech.glide.Glide;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;

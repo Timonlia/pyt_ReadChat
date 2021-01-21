@@ -54,7 +54,9 @@ class BookDetailAndEditActivity : ToolbarActivity() {
         recyclerView.layoutManager = layoutManager
         getPostBook(idBook)
         onClicksButtons()
+        searchCaps()
         listenerChangesCollection()
+        listenerChangesCollectionChapter()
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -70,7 +72,6 @@ class BookDetailAndEditActivity : ToolbarActivity() {
             bookProvider.getPostById(idBook).addOnSuccessListener {
                 if (it.exists()){
                     if (it.contains(NamesCollection.COLLECTION_BOOK_TITLE)) {
-                        Log.i("hola", it[NamesCollection.COLLECTION_BOOK_QUANTITY_CAPS].toString())
                        AddChapterDialog(
                            idBook, it.getString(NamesCollection.COLLECTION_BOOK_TITLE).toString(),
                            it[NamesCollection.COLLECTION_BOOK_QUANTITY_CAPS].toString()
@@ -121,7 +122,6 @@ class BookDetailAndEditActivity : ToolbarActivity() {
                             it.getString(
                                 NamesCollection.COLLECTION_BOOK_DESCRIPTION_BOOK
                             )
-
                 }
             }
         }
@@ -132,6 +132,15 @@ class BookDetailAndEditActivity : ToolbarActivity() {
             EventListener<DocumentSnapshot> {
             override fun onEvent(snapshot: DocumentSnapshot?, exception: FirebaseFirestoreException?) {
                 getPostBook(idBook)
+            }
+        })
+    }
+
+    private fun listenerChangesCollectionChapter(){
+        bookProvider.getBookForSnapshot(idBook).addSnapshotListener(object : java.util.EventListener,
+            EventListener<DocumentSnapshot> {
+            override fun onEvent(snapshot: DocumentSnapshot?, exception: FirebaseFirestoreException?) {
+                searchCaps()
             }
         })
     }
@@ -160,8 +169,7 @@ class BookDetailAndEditActivity : ToolbarActivity() {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
+    private fun searchCaps(){
         val chapter: Query = bookProvider.getAllCapsByBook(idBook)
         chapter.get().addOnCompleteListener {
             if (it.isSuccessful) {
@@ -185,8 +193,11 @@ class BookDetailAndEditActivity : ToolbarActivity() {
                 }
             }
         }
+    }
 
-
+    override fun onStart() {
+        super.onStart()
+        searchCaps()
     }
 
     override fun onStop() {

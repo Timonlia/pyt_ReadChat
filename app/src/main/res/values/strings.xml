@@ -31,7 +31,7 @@
     <string name="not_have_changes_to_save">No hay cambios que guardar</string>
     <string name="cant_save_changes">No se han podido guardar los cambios, intentelo mas tarde.</string>
     <string name="book_title">Título</string>
-    <string name="book_category">Categoría</string>
+    <string name="book_category">Categoría:</string>
     // Snackbars / Toast
     <string name="snackbar_confirm_email">Revisa tu correo, y confirma el email</string>
     <string name="snackbar_need_register">Error, compreba que hayas introducido tus datos correctamente</string>
@@ -62,15 +62,19 @@
     <string name="category_fan_fics">Fanfics</string>
     // Dialog
     <string name="dialog_new_title">Nuevo título...</string>
+    <string name="post_title_add">Titulo de la Publicación</string>
+    <string name="post_description_add">Descripción de la Publicación</string>
+    <string name="create_post">Crear publicación</string>
     <string name="dialog_new_description">Nueva descripción...</string>
 
     <string name="search">Buscar...</string>
-    <string name="category">Categoría</string>
+    <string name="category">Category:</string>
     <string name="votes">Votos</string>
     <string name="books">Libros</string>
     <string name="delete_chaper">Eliminar capítulo</string>
     // Errors
-
+    <string name="show_profile">Ver Perfil</string>
+    <string name="new_message">Nuevo mensaje...</string>
     <string name="begin_write_chapter">Empieza a escribir tu capítulo...</string>
 
     // NavigationDrawer

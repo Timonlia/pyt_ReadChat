@@ -45,6 +45,9 @@ class AddChapterDialog constructor(var idBook: String, var titleBook: String, va
                             }
                         }
                     }
+
+
+
                 } else {
                     fragmentManager?.let { AddChapterDialog(idBook,titleBook,countChapter).show(it,"") }
                     activity!!.toast(activity!!.applicationContext.getString(R.string.snack_bar_fill_all_fields))

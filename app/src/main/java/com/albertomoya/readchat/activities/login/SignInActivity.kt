@@ -9,6 +9,7 @@ import com.albertomoya.readchat.R
 import com.albertomoya.readchat.dialogs.ForgotPasswordDialog
 import com.albertomoya.readchat.others.goToActivity
 import com.albertomoya.readchat.others.snackBar
+import com.albertomoya.readchat.others.toast
 import com.albertomoya.readchat.persistance.User
 import com.albertomoya.readchat.utilities.providers.AuthProvider
 import com.albertomoya.readchat.utilities.NamesCollection
@@ -76,18 +77,10 @@ class SignInActivity : AppCompatActivity() {
                         android.R.anim.slide_out_right
                     )
                 } else {
-                   snackBar(
-                       getString(R.string.snackbar_confirm_email) + " " + dbProvider.getEmail().toString(),
-                       view = findViewById(
-                           R.id.activity_sign_in
-                       ),
-                       action = applicationContext.getString(R.string.snack_bar_resend)
-                   ){
-                       mAuth.currentUser!!.sendEmailVerification()
-                   }
+                   toast(getString(R.string.snackbar_confirm_email))
                 }
             } else {
-                snackBar(getString(R.string.snackbar_need_register))
+                toast(getString(R.string.snackbar_need_register))
             }
         }
     }

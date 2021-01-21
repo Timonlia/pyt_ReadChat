@@ -15,7 +15,9 @@
     <string name="text_view_no_tiene_cuenta">You do not have an account?</string>
     <string name="text_view_regístrate">Sign up here</string>
     <string name="edit_text_email_forgot_password">Email Address</string>
-
+    <string name="post_title_add">Title Post</string>
+    <string name="post_description_add">Description Post</string>
+    <string name="create_post">Create Post</string>
     <string name="button_resend_email">Resend</string>
     <string name="button_ok">Ok</string>
     <string name="button_cancel">Cancel</string>
@@ -23,6 +25,8 @@
     <string name="nickname">Nickname</string>
     <string name="fullname">Full Name</string>
     <string name="description">Description</string>
+    <string name="show_profile">Show Profile</string>
+    <string name="new_message">New message...</string>
     <string name="title">Title</string>
     <string name="save_changes_edit_profile">Save Changes</string>
     <string name="back_to_home">Back to home</string>

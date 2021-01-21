@@ -180,6 +180,7 @@
         android:layout_marginBottom="15sp"
         android:background="@drawable/button_ripple_register"
         android:text="@string/button_sign_up"
+        android:textColor="@color/white"
         app:layout_anchor="@+id/linearLayout"
         app:layout_anchorGravity="bottom|center" />
 

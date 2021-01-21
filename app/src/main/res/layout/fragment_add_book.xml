@@ -38,7 +38,7 @@
                 android:id="@+id/editTextTitleCreateBook"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Titulo de la Publicación"
+                android:hint="@string/post_title_add"
                 android:maxLength="36"
                 android:maxLines="4"
                 android:textSize="16dp"
@@ -62,7 +62,7 @@
                 android:id="@+id/editTextDescriptionCreateBook"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Descripción de la Publicación"
+                android:hint="@string/post_description_add"
                 android:maxLength="600"
                 android:maxLines="4"
                 android:textColor="@color/colorSecondaryText"
@@ -75,9 +75,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
-            android:text="Categoria:"
+            android:text="@string/category"
             android:textSize="16dp"
-
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextDescriptionCreateBook2" />
@@ -100,7 +99,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
-            android:text="La siguiente opción permitira que tu aplicación tenga chat o no. En este chat se agregaran a todos aquellos Usuarios que agregen a favoritos esta publicación"
+            android:text="@string/chat_create_info"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spinnerSearchableCategory" />
